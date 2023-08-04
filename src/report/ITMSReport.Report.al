@@ -1,8 +1,9 @@
 report 50100 "ITMS Report"
 {
+    DefaultLayout = RDLC;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = Basic, Suite;
-    //DefaultRenderingLayout = LayoutName;
+    DefaultRenderingLayout = './src/report/layouts/PaymentCommission.rdlc';
     Caption = 'Report';
 
     /*
