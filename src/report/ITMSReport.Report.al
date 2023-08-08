@@ -4,6 +4,7 @@ report 50100 "ITMS Report"
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = Basic, Suite;
     RDLCLayout = './src/report/layouts/SalespersonCommission2.rdlc';
+    //Caption = 'Report Payment Commission';
     Caption = 'Report';
     ;
 
@@ -81,7 +82,7 @@ report 50100 "ITMS Report"
             column(Cust__Ledger_Entry__Document_No__Caption; "Cust. Ledger Entry".FieldCaption("Document No."))
             {
             }
-            column(Cust__Ledger_Entry__Customer_No__Caption; "Cust. Ledger Entry".FieldCaption("Customer No."))
+            column(Cust__Ledger_Entry__Customer_No__Caption; "Detailed Cust. Ledg. Entry".FieldCaption("Document No."))
             {
             }
             column(Cust__Ledger_Entry__Sales__LCY__Caption; "Cust. Ledger Entry".FieldCaption("Sales (LCY)"))
@@ -111,16 +112,16 @@ report 50100 "ITMS Report"
             dataitem("Cust. Ledger Entry"; "Cust. Ledger Entry")
             {
 
-                DataItemLink = "Salesperson Code" = FIELD(Code);
-                DataItemTableView = SORTING("Salesperson Code", "Posting Date") WHERE("Document Type" = FILTER(Invoice | "Credit Memo"));
+                DataItemLink = "Salesperson Code" = field(Code);
+                DataItemTableView = sorting("Salesperson Code", "Posting Date") where("Document Type" = filter(Invoice | "Credit Memo"));
                 RequestFilterFields = "Posting Date";
                 dataitem("Detailed Cust. Ledg. Entry"; "Detailed Cust. Ledg. Entry")
 
                 {
-                    DataItemLink = "Cust. Ledger Entry No." = FIELD("Entry No.");
+                    DataItemLink = "Cust. Ledger Entry No." = field("Entry No.");
                     //DataItemLinkReference = "Cust. Ledger Entry";
-                    DataItemTableView = SORTING("Document No.", "Posting Date") WHERE("Entry Type" = FILTER("Application"), "Document Type" = FILTER("Payment"));
-                    RequestFilterFields = "Posting Date";
+                    DataItemTableView = sorting("Document No.", "Posting Date") where("Entry Type" = filter("Application"), "Document Type" = filter("Payment"));
+                    //RequestFilterFields = "Posting Date";
                     column(Cust__Ledger_Entry__Posting_Date_; Format("Detailed Cust. Ledg. Entry"."Posting Date"))
                     {
                     }
