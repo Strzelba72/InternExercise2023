@@ -109,6 +109,10 @@ report 50100 "ITMS Report"
             column(TotalCaption; TotalCaptionLbl)
             {
             }
+            column(TotalSum; TotalSumCalc)
+            {
+
+            }
             dataitem("Cust. Ledger Entry"; "Cust. Ledger Entry")
             {
 
@@ -175,6 +179,7 @@ report 50100 "ITMS Report"
                         ClearAmounts();
                     end;
                 }
+
 
 
 
@@ -252,6 +257,7 @@ report 50100 "ITMS Report"
         PaymentAmountCaptionLbl: Label 'Payment Amount (LCY)';
         AdjProfitCommissionAmt_Control45CaptionLbl: Label 'Salesperson Commission Amount (LCY)';
         TotalCaptionLbl: Label 'Total';
+        TotalSumCalc: Decimal;
 
     local procedure ClearAmounts()
     begin
