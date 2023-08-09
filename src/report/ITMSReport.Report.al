@@ -79,13 +79,13 @@ report 50100 "ITMS Report"
             column(Cust__Ledger_Entry__Posting_Date_Caption; Cust__Ledger_Entry__Posting_Date_CaptionLbl)
             {
             }
-            column(Cust__Ledger_Entry__Document_No__Caption; "Cust. Ledger Entry".FieldCaption("Document No."))
+            column(Cust__Ledger_Entry__Document_No__Caption; 'Invoice No.')
             {
             }
-            column(Cust__Ledger_Entry__Customer_No__Caption; "Detailed Cust. Ledg. Entry".FieldCaption("Document No."))
+            column(Cust__Ledger_Entry__Customer_No__Caption; 'Payment No.')
             {
             }
-            column(Cust__Ledger_Entry__Sales__LCY__Caption; "Cust. Ledger Entry".FieldCaption("Sales (LCY)"))
+            column(Cust__Ledger_Entry__Sales__LCY__Caption; 'Invoice Amount (LCY)')
             {
             }
             column(Cust__Ledger_Entry__Profit__LCY__Caption; "Cust. Ledger Entry".FieldCaption("Profit (LCY)"))
@@ -97,7 +97,7 @@ report 50100 "ITMS Report"
             column(ProfitCommissionAmt_Control33Caption; ProfitCommissionAmt_Control33CaptionLbl)
             {
             }
-            column(AdjProfit_Control39Caption; AdjProfit_Control39CaptionLbl)
+            column(AdjProfit_Control39Caption; PaymentAmountCaptionLbl)
             {
             }
             column(AdjProfitCommissionAmt_Control45Caption; AdjProfitCommissionAmt_Control45CaptionLbl)
@@ -113,14 +113,16 @@ report 50100 "ITMS Report"
             {
 
                 DataItemLink = "Salesperson Code" = field(Code);
-                DataItemTableView = sorting("Salesperson Code", "Posting Date") where("Document Type" = filter(Invoice | "Credit Memo"));
-                RequestFilterFields = "Posting Date";
+                DataItemTableView = sorting("Posting Date") where("Document Type" = filter(Invoice | "Credit Memo"), "Sales (LCY)" = filter(<> 0));
+                //RequestFilterFields = "Posting Date";
+
+                PrintOnlyIfDetail = true;
                 dataitem("Detailed Cust. Ledg. Entry"; "Detailed Cust. Ledg. Entry")
 
                 {
                     DataItemLink = "Cust. Ledger Entry No." = field("Entry No.");
-                    //DataItemLinkReference = "Cust. Ledger Entry";
-                    DataItemTableView = sorting("Document No.", "Posting Date") where("Entry Type" = filter("Application"), "Document Type" = filter("Payment"));
+                    DataItemLinkReference = "Cust. Ledger Entry";
+                    DataItemTableView = sorting("Posting Date", "Document No.") where("Entry Type" = filter("Application"), "Document Type" = filter("Payment"));
                     //RequestFilterFields = "Posting Date";
                     column(Cust__Ledger_Entry__Posting_Date_; Format("Detailed Cust. Ledg. Entry"."Posting Date"))
                     {
@@ -149,30 +151,33 @@ report 50100 "ITMS Report"
                     {
                         AutoFormatType = 1;
                     }
-                    column(AdjProfitCommissionAmt_Control45; AdjProfitCommissionAmt)
+                    column(AdjProfitCommissionAmt_Control45; SalesCommissionAmt)
                     {
                         AutoFormatType = 1;
                     }
                     column(Salesperson_Purchaser__Name; "Salesperson/Purchaser".Name)
                     {
                     }
+                    trigger OnAfterGetRecord()
+                    var
+                        CostCalcMgt: Codeunit "Cost Calculation Management";
+                    begin
+
+                        SalesCommissionAmt := Round(("Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1)) / ("Cust. Ledger Entry"."Sales (LCY)") * ("Salesperson/Purchaser"."Commission %" / 100) * "Cust. Ledger Entry"."Profit (LCY)");
+                        ProfitCommissionAmt := Round("Cust. Ledger Entry"."Profit (LCY)" * "Salesperson/Purchaser"."Commission %" / 100);
+                        AdjProfit := "Cust. Ledger Entry"."Profit (LCY)" + CostCalcMgt.CalcCustLedgAdjmtCostLCY("Cust. Ledger Entry");
+                        AdjProfitCommissionAmt := Round(AdjProfit * "Salesperson/Purchaser"."Commission %" / 100);
+
+                    end;
+
+                    trigger OnPreDataItem()
+                    begin
+                        ClearAmounts();
+                    end;
                 }
 
 
-                trigger OnAfterGetRecord()
-                var
-                    CostCalcMgt: Codeunit "Cost Calculation Management";
-                begin
-                    SalesCommissionAmt := Round("Sales (LCY)" * "Salesperson/Purchaser"."Commission %" / 100);
-                    ProfitCommissionAmt := Round("Profit (LCY)" * "Salesperson/Purchaser"."Commission %" / 100);
-                    AdjProfit := "Profit (LCY)" + CostCalcMgt.CalcCustLedgAdjmtCostLCY("Cust. Ledger Entry");
-                    AdjProfitCommissionAmt := Round(AdjProfit * "Salesperson/Purchaser"."Commission %" / 100);
-                end;
 
-                trigger OnPreDataItem()
-                begin
-                    ClearAmounts();
-                end;
             }
 
             trigger OnAfterGetRecord()
@@ -223,6 +228,7 @@ report 50100 "ITMS Report"
     begin
         SalespersonFilter := "Salesperson/Purchaser".GetFilters();
         CustLedgEntryFilter := "Cust. Ledger Entry".GetFilters();
+        //DetCustLedgEntryFilter := "Detailed Cust. Ledg. Entry".GetFilters();
         PeriodText := "Cust. Ledger Entry".GetFilter("Posting Date");
     end;
 
@@ -243,8 +249,8 @@ report 50100 "ITMS Report"
         Cust__Ledger_Entry__Posting_Date_CaptionLbl: Label 'Posting Date';
         SalesCommissionAmt_Control32CaptionLbl: Label 'Sales Commission (LCY)';
         ProfitCommissionAmt_Control33CaptionLbl: Label 'Profit Commission (LCY)';
-        AdjProfit_Control39CaptionLbl: Label 'Adjusted Profit (LCY)';
-        AdjProfitCommissionAmt_Control45CaptionLbl: Label 'Adjusted Profit Commission (LCY)';
+        PaymentAmountCaptionLbl: Label 'Payment Amount (LCY)';
+        AdjProfitCommissionAmt_Control45CaptionLbl: Label 'Salesperson Commission Amount (LCY)';
         TotalCaptionLbl: Label 'Total';
 
     local procedure ClearAmounts()

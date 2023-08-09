@@ -11,61 +11,161 @@
       <rd:DataSourceID>eae4e88c-a78a-4aa5-8d0a-50d0b87ba410</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="STRSUBSTNO_Text000_PeriodText_">
+          <DataField>STRSUBSTNO_Text000_PeriodText_</DataField>
+        </Field>
+        <Field Name="COMPANYNAME">
+          <DataField>COMPANYNAME</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter">
+          <DataField>Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter</DataField>
+        </Field>
+        <Field Name="SalespersonFilter">
+          <DataField>SalespersonFilter</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter">
+          <DataField>Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter</DataField>
+        </Field>
+        <Field Name="CustLedgEntryFilter">
+          <DataField>CustLedgEntryFilter</DataField>
+        </Field>
+        <Field Name="PageGroupNo">
+          <DataField>PageGroupNo</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser_Code">
+          <DataField>Salesperson_Purchaser_Code</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser_Name">
+          <DataField>Salesperson_Purchaser_Name</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser__Commission___">
+          <DataField>Salesperson_Purchaser__Commission___</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser__Commission___Format">
+          <DataField>Salesperson_Purchaser__Commission___Format</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry___Sales__LCY__">
+          <DataField>Cust__Ledger_Entry___Sales__LCY__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry___Sales__LCY__Format">
+          <DataField>Cust__Ledger_Entry___Sales__LCY__Format</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry___Profit__LCY__">
+          <DataField>Cust__Ledger_Entry___Profit__LCY__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry___Profit__LCY__Format">
+          <DataField>Cust__Ledger_Entry___Profit__LCY__Format</DataField>
+        </Field>
+        <Field Name="SalesCommissionAmt">
+          <DataField>SalesCommissionAmt</DataField>
+        </Field>
+        <Field Name="SalesCommissionAmtFormat">
+          <DataField>SalesCommissionAmtFormat</DataField>
+        </Field>
+        <Field Name="ProfitCommissionAmt">
+          <DataField>ProfitCommissionAmt</DataField>
+        </Field>
+        <Field Name="ProfitCommissionAmtFormat">
+          <DataField>ProfitCommissionAmtFormat</DataField>
+        </Field>
+        <Field Name="AdjProfit">
+          <DataField>AdjProfit</DataField>
+        </Field>
+        <Field Name="AdjProfitFormat">
+          <DataField>AdjProfitFormat</DataField>
+        </Field>
+        <Field Name="AdjProfitCommissionAmt">
+          <DataField>AdjProfitCommissionAmt</DataField>
+        </Field>
+        <Field Name="AdjProfitCommissionAmtFormat">
+          <DataField>AdjProfitCommissionAmtFormat</DataField>
+        </Field>
+        <Field Name="Salesperson___CommissionCaption">
+          <DataField>Salesperson___CommissionCaption</DataField>
+        </Field>
+        <Field Name="CurrReport_PAGENOCaption">
+          <DataField>CurrReport_PAGENOCaption</DataField>
+        </Field>
+        <Field Name="All_amounts_are_in_LCYCaption">
+          <DataField>All_amounts_are_in_LCYCaption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Posting_Date_Caption">
+          <DataField>Cust__Ledger_Entry__Posting_Date_Caption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Document_No__Caption">
+          <DataField>Cust__Ledger_Entry__Document_No__Caption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Customer_No__Caption">
+          <DataField>Cust__Ledger_Entry__Customer_No__Caption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Sales__LCY__Caption">
+          <DataField>Cust__Ledger_Entry__Sales__LCY__Caption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Profit__LCY__Caption">
+          <DataField>Cust__Ledger_Entry__Profit__LCY__Caption</DataField>
+        </Field>
+        <Field Name="AdjProfit_Control39Caption">
+          <DataField>AdjProfit_Control39Caption</DataField>
+        </Field>
+        <Field Name="AdjProfitCommissionAmt_Control45Caption">
+          <DataField>AdjProfitCommissionAmt_Control45Caption</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser__Commission___Caption">
+          <DataField>Salesperson_Purchaser__Commission___Caption</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Posting_Date_">
+          <DataField>Cust__Ledger_Entry__Posting_Date_</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Document_No__">
+          <DataField>Cust__Ledger_Entry__Document_No__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Customer_No__">
+          <DataField>Cust__Ledger_Entry__Customer_No__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Sales__LCY__">
+          <DataField>Cust__Ledger_Entry__Sales__LCY__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Sales__LCY__Format">
+          <DataField>Cust__Ledger_Entry__Sales__LCY__Format</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Profit__LCY__">
+          <DataField>Cust__Ledger_Entry__Profit__LCY__</DataField>
+        </Field>
+        <Field Name="Cust__Ledger_Entry__Profit__LCY__Format">
+          <DataField>Cust__Ledger_Entry__Profit__LCY__Format</DataField>
+        </Field>
+        <Field Name="AdjProfit_Control39">
+          <DataField>AdjProfit_Control39</DataField>
+        </Field>
+        <Field Name="AdjProfit_Control39Format">
+          <DataField>AdjProfit_Control39Format</DataField>
+        </Field>
+        <Field Name="AdjProfitCommissionAmt_Control45">
+          <DataField>AdjProfitCommissionAmt_Control45</DataField>
+        </Field>
+        <Field Name="AdjProfitCommissionAmt_Control45Format">
+          <DataField>AdjProfitCommissionAmt_Control45Format</DataField>
+        </Field>
+        <Field Name="Salesperson_Purchaser__Name">
+          <DataField>Salesperson_Purchaser__Name</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
         <ReportItems>
-          <Textbox Name="Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter.Value)</Value>
-                    <Style>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-              </Paragraph>
-            </Paragraphs>
-            <Height>0.423cm</Height>
-            <Width>17.85cm</Width>
-            <ZIndex>2</ZIndex>
-            <Visibility>
-              <Hidden>=IIF(Fields!SalespersonFilter.Value="",TRUE,FALSE)</Hidden>
-            </Visibility>
-            <DataElementOutput>NoOutput</DataElementOutput>
-            <Style>
-              <VerticalAlign>Middle</VerticalAlign>
-            </Style>
-          </Textbox>
-          <Textbox Name="Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter.Value)</Value>
-                    <Style>
-                      <FontSize>7pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-              </Paragraph>
-            </Paragraphs>
-            <Top>0.423cm</Top>
-            <Height>0.423cm</Height>
-            <Width>17.85cm</Width>
-            <ZIndex>1</ZIndex>
-            <Visibility>
-              <Hidden>=IIF(Fields!CustLedgEntryFilter.Value="",TRUE,FALSE)</Hidden>
-            </Visibility>
-            <DataElementOutput>NoOutput</DataElementOutput>
-            <Style>
-              <VerticalAlign>Middle</VerticalAlign>
-            </Style>
-          </Textbox>
           <Tablix Name="Table1">
             <TablixBody>
               <TablixColumns>
@@ -73,28 +173,28 @@
                   <Width>1.70476cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.9cm</Width>
+                  <Width>1.7992cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.8cm</Width>
+                  <Width>1.86521cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>2.9301cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>2.69583cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>3.04382cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>3.2076cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2cm</Width>
+                  <Width>0.1741cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.22222cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.1cm</Width>
@@ -132,6 +232,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>130</ZIndex>
@@ -161,6 +262,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>129</ZIndex>
@@ -190,6 +292,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>128</ZIndex>
@@ -301,70 +404,6 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SalesCommissionAmt_Control32Caption">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=First(Fields!SalesCommissionAmt_Control32Caption.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>124</ZIndex>
-                          <Style>
-                            <VerticalAlign>Bottom</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ProfitCommissionAmt_Control33Caption">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=First(Fields!ProfitCommissionAmt_Control33Caption.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>123</ZIndex>
-                          <Style>
-                            <VerticalAlign>Bottom</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="AdjProfitCommissionAmt_Control45Caption">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -397,6 +436,70 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="ProfitCommissionAmt_Control33Caption">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>123</ZIndex>
+                          <Style>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox57">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox57</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Bottom</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="TextBox118">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -407,6 +510,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>121</ZIndex>
@@ -442,6 +546,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox2</rd:DefaultName>
@@ -469,6 +574,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox3</rd:DefaultName>
@@ -528,6 +634,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox6</rd:DefaultName>
@@ -554,6 +661,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox7</rd:DefaultName>
@@ -580,6 +688,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox8</rd:DefaultName>
@@ -606,6 +715,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox9</rd:DefaultName>
@@ -632,6 +742,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox10</rd:DefaultName>
@@ -658,6 +769,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox17</rd:DefaultName>
@@ -684,6 +796,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox20</rd:DefaultName>
@@ -710,6 +823,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox21</rd:DefaultName>
@@ -736,6 +850,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox22</rd:DefaultName>
@@ -762,6 +877,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox23</rd:DefaultName>
@@ -788,6 +904,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox24</rd:DefaultName>
@@ -822,6 +939,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox29</rd:DefaultName>
@@ -851,6 +969,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox30</rd:DefaultName>
@@ -877,6 +996,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox31</rd:DefaultName>
@@ -902,6 +1022,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox32</rd:DefaultName>
@@ -927,6 +1048,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox33</rd:DefaultName>
@@ -952,6 +1074,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox34</rd:DefaultName>
@@ -977,6 +1100,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox35</rd:DefaultName>
@@ -1002,6 +1126,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox36</rd:DefaultName>
@@ -1027,6 +1152,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox37</rd:DefaultName>
@@ -1052,6 +1178,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox38</rd:DefaultName>
@@ -1077,6 +1204,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox53</rd:DefaultName>
@@ -1102,6 +1230,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox54</rd:DefaultName>
@@ -1127,6 +1256,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox55</rd:DefaultName>
@@ -1152,6 +1282,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox56</rd:DefaultName>
@@ -1185,6 +1316,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>92</ZIndex>
@@ -1213,6 +1345,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>91</ZIndex>
@@ -1238,6 +1371,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox69</rd:DefaultName>
@@ -1263,6 +1397,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox70</rd:DefaultName>
@@ -1288,6 +1423,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox71</rd:DefaultName>
@@ -1313,6 +1449,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox72</rd:DefaultName>
@@ -1338,6 +1475,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox73</rd:DefaultName>
@@ -1363,6 +1501,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox74</rd:DefaultName>
@@ -1388,6 +1527,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox75</rd:DefaultName>
@@ -1413,6 +1553,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox76</rd:DefaultName>
@@ -1438,6 +1579,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox77</rd:DefaultName>
@@ -1463,6 +1605,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox78</rd:DefaultName>
@@ -1488,6 +1631,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox79</rd:DefaultName>
@@ -1513,6 +1657,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox80</rd:DefaultName>
@@ -1543,6 +1688,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox95</rd:DefaultName>
@@ -1571,6 +1717,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>77</ZIndex>
@@ -1628,6 +1775,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox98</rd:DefaultName>
@@ -1653,6 +1801,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox99</rd:DefaultName>
@@ -1678,6 +1827,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox100</rd:DefaultName>
@@ -1703,6 +1853,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox101</rd:DefaultName>
@@ -1728,6 +1879,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox102</rd:DefaultName>
@@ -1753,6 +1905,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox103</rd:DefaultName>
@@ -1778,6 +1931,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox104</rd:DefaultName>
@@ -1803,6 +1957,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox105</rd:DefaultName>
@@ -1828,6 +1983,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox106</rd:DefaultName>
@@ -1853,6 +2009,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox107</rd:DefaultName>
@@ -1878,6 +2035,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox108</rd:DefaultName>
@@ -1908,6 +2066,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox1</rd:DefaultName>
@@ -1935,6 +2094,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox4</rd:DefaultName>
@@ -1994,6 +2154,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox12</rd:DefaultName>
@@ -2019,6 +2180,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox13</rd:DefaultName>
@@ -2044,6 +2206,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox14</rd:DefaultName>
@@ -2059,23 +2222,27 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="textbox15">
+                        <Textbox Name="Textbox59">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>textbox15</rd:DefaultName>
-                          <ZIndex>58</ZIndex>
+                          <rd:DefaultName>Textbox59</rd:DefaultName>
                           <Style>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -2094,6 +2261,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox16</rd:DefaultName>
@@ -2119,6 +2287,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox18</rd:DefaultName>
@@ -2144,6 +2313,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox19</rd:DefaultName>
@@ -2169,6 +2339,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox25</rd:DefaultName>
@@ -2194,6 +2365,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox26</rd:DefaultName>
@@ -2219,6 +2391,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox27</rd:DefaultName>
@@ -2244,6 +2417,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox28</rd:DefaultName>
@@ -2370,6 +2544,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>10</ZIndex>
@@ -2399,6 +2574,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>9</ZIndex>
@@ -2428,67 +2604,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>8</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SalesCommissionAmt_Control32">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!SalesCommissionAmt_Control32.Value</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <Format>=Fields!SalesCommissionAmt_Control32Format.Value</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>7</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ProfitCommissionAmt_Control33">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!ProfitCommissionAmt_Control33.Value</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <Format>=Fields!ProfitCommissionAmt_Control33Format.Value</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>6</ZIndex>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -2515,12 +2634,69 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>5</ZIndex>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="ProfitCommissionAmt_Control33">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <Format>=Fields!ProfitCommissionAmt_Control33Format.Value</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <ZIndex>6</ZIndex>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="textbox15">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>textbox15</rd:DefaultName>
+                          <ZIndex>58</ZIndex>
+                          <Style>
+                            <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
@@ -2542,6 +2718,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>4</ZIndex>
@@ -2572,6 +2749,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>3</ZIndex>
@@ -2603,6 +2781,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>2</ZIndex>
@@ -2634,6 +2813,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>1</ZIndex>
@@ -2664,6 +2844,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <Visibility>
@@ -2696,6 +2877,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox81</rd:DefaultName>
@@ -2724,6 +2906,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>26</ZIndex>
@@ -2749,6 +2932,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox83</rd:DefaultName>
@@ -2779,6 +2963,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>24</ZIndex>
@@ -2809,6 +2994,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>23</ZIndex>
@@ -2839,69 +3025,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>22</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SalesCommissionAmt_Control37">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!SalesCommissionAmt_Control32.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!SalesCommissionAmt_Control32Format.Value)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>21</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ProfitCommissionAmt_Control38">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!ProfitCommissionAmt_Control33.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!ProfitCommissionAmt_Control33Format.Value)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>20</ZIndex>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -2929,6 +3056,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>19</ZIndex>
@@ -2936,6 +3064,66 @@
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox58">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox58</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox60">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox60</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -2954,6 +3142,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox90</rd:DefaultName>
@@ -2979,6 +3168,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox91</rd:DefaultName>
@@ -3004,6 +3194,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox92</rd:DefaultName>
@@ -3029,6 +3220,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox93</rd:DefaultName>
@@ -3054,6 +3246,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox94</rd:DefaultName>
@@ -3087,6 +3280,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox39</rd:DefaultName>
@@ -3113,6 +3307,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox40</rd:DefaultName>
@@ -3139,6 +3334,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox41</rd:DefaultName>
@@ -3170,6 +3366,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox42</rd:DefaultName>
@@ -3201,6 +3398,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox43</rd:DefaultName>
@@ -3232,6 +3430,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox44</rd:DefaultName>
@@ -3263,6 +3462,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox45</rd:DefaultName>
@@ -3294,6 +3494,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox46</rd:DefaultName>
@@ -3325,6 +3526,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox47</rd:DefaultName>
@@ -3351,6 +3553,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox48</rd:DefaultName>
@@ -3377,6 +3580,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox49</rd:DefaultName>
@@ -3403,6 +3607,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox50</rd:DefaultName>
@@ -3429,6 +3634,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox51</rd:DefaultName>
@@ -3455,6 +3661,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>textbox52</rd:DefaultName>
@@ -3490,6 +3697,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>50</ZIndex>
@@ -3517,6 +3725,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>49</ZIndex>
@@ -3547,6 +3756,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>48</ZIndex>
@@ -3558,6 +3768,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3577,6 +3788,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>47</ZIndex>
@@ -3599,7 +3811,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfit.Value)</Value>
+                                  <Value>=Sum(Fields!AdjProfit_Control39.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3607,69 +3819,10 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>46</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="SalesCommissionAmt">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!SalesCommissionAmt.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!SalesCommissionAmtFormat.Value)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>45</ZIndex>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>0.075cm</PaddingLeft>
-                            <PaddingRight>0.075cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="ProfitCommissionAmt">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!ProfitCommissionAmt.Value)</Value>
-                                  <Style>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!ProfitCommissionAmtFormat.Value)</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                            </Paragraph>
-                          </Paragraphs>
-                          <ZIndex>44</ZIndex>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -3697,6 +3850,7 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>43</ZIndex>
@@ -3704,6 +3858,66 @@
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox62">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox62</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox61">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox61</rd:DefaultName>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.075cm</PaddingLeft>
+                            <PaddingRight>0.075cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -3722,6 +3936,7 @@
                                   <Style />
                                 </TextRun>
                               </TextRuns>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <ZIndex>42</ZIndex>
@@ -3842,28 +4057,208 @@
             <PageBreak>
               <BreakLocation>End</BreakLocation>
             </PageBreak>
+            <SortExpressions>
+              <SortExpression>
+                <Value>=Fields!Salesperson_Purchaser__Name.Value</Value>
+              </SortExpression>
+              <SortExpression>
+                <Value>=Fields!Cust__Ledger_Entry__Posting_Date_.Value</Value>
+              </SortExpression>
+            </SortExpressions>
             <Top>1.08381cm</Top>
-            <Width>18.12698cm</Width>
+            <Height>4.86238cm</Height>
+            <Width>18cm</Width>
+            <Style />
           </Tablix>
+          <Textbox Name="Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter.Value)</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Top>0.423cm</Top>
+            <Height>0.423cm</Height>
+            <Width>17.85cm</Width>
+            <ZIndex>1</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(Fields!CustLedgEntryFilter.Value="",TRUE,FALSE)</Hidden>
+            </Visibility>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+            </Style>
+          </Textbox>
+          <Textbox Name="Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter.Value)</Value>
+                    <Style>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <Height>0.423cm</Height>
+            <Width>17.85cm</Width>
+            <ZIndex>2</ZIndex>
+            <Visibility>
+              <Hidden>=IIF(Fields!SalespersonFilter.Value="",TRUE,FALSE)</Hidden>
+            </Visibility>
+            <DataElementOutput>NoOutput</DataElementOutput>
+            <Style>
+              <VerticalAlign>Middle</VerticalAlign>
+            </Style>
+          </Textbox>
         </ReportItems>
         <Height>5.9462cm</Height>
+        <Style />
       </Body>
-      <Width>18.73016cm</Width>
+      <Width>18.15cm</Width>
       <Page>
         <PageHeader>
           <Height>2.22222cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="PageNumberTextBox">
+            <Textbox Name="All_amounts_are_in_LCYCaption1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!PageNumber</Value>
+                      <Value>=ReportItems!All_amounts_are_in_LCYCaption.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.692cm</Top>
+              <Height>0.423cm</Height>
+              <Width>7.5cm</Width>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="CurrReport_PAGENOCaption1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!CurrReport_PAGENOCaption.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.423cm</Top>
+              <Left>16.95cm</Left>
+              <Height>0.423cm</Height>
+              <Width>0.75cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Salesperson___CommissionCaption1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!Salesperson___CommissionCaption.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Height>0.423cm</Height>
+              <Width>7.5cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="COMPANYNAME1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!COMPANYNAME.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.846cm</Top>
+              <Height>0.423cm</Height>
+              <Width>7.5cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="STRSUBSTNO_Text000_PeriodText_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!STRSUBSTNO_Text000_PeriodText_.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.423cm</Top>
+              <Height>0.423cm</Height>
+              <Width>7.5cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ExecutionTimeTextBox">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <Format>D</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -3872,11 +4267,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.423cm</Top>
-              <Left>17.7cm</Left>
+              <Left>15cm</Left>
               <Height>0.423cm</Height>
-              <Width>0.45cm</Width>
-              <ZIndex>7</ZIndex>
+              <Width>3.15cm</Width>
+              <ZIndex>5</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -3908,16 +4302,15 @@
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ExecutionTimeTextBox">
+            <Textbox Name="PageNumberTextBox">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Globals!ExecutionTime</Value>
+                      <Value>=Globals!PageNumber</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
-                        <Format>D</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -3926,125 +4319,17 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Left>15cm</Left>
-              <Height>0.423cm</Height>
-              <Width>3.15cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="STRSUBSTNO_Text000_PeriodText_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!STRSUBSTNO_Text000_PeriodText_.Value</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                </Paragraph>
-              </Paragraphs>
               <Top>0.423cm</Top>
+              <Left>17.7cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.5cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="COMPANYNAME1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!COMPANYNAME.Value</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.846cm</Top>
-              <Height>0.423cm</Height>
-              <Width>7.5cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Salesperson___CommissionCaption1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!Salesperson___CommissionCaption.Value</Value>
-                      <Style>
-                        <FontSize>8pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                </Paragraph>
-              </Paragraphs>
-              <Height>0.423cm</Height>
-              <Width>7.5cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CurrReport_PAGENOCaption1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!CurrReport_PAGENOCaption.Value</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.423cm</Top>
-              <Left>16.95cm</Left>
-              <Height>0.423cm</Height>
-              <Width>0.75cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="All_amounts_are_in_LCYCaption1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=ReportItems!All_amounts_are_in_LCYCaption.Value</Value>
-                      <Style>
-                        <FontSize>7pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                </Paragraph>
-              </Paragraphs>
-              <Top>1.692cm</Top>
-              <Height>0.423cm</Height>
-              <Width>7.5cm</Width>
+              <Width>0.45cm</Width>
+              <ZIndex>7</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
           </ReportItems>
+          <Style />
         </PageHeader>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -4053,9 +4338,16 @@
         <LeftMargin>1.5cm</LeftMargin>
         <TopMargin>2cm</TopMargin>
         <BottomMargin>2cm</BottomMargin>
+        <Style />
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -4093,175 +4385,6 @@ End Function
 </Code>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Invalid</rd:ReportUnitType>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>49ecfdd9-45af-40f8-b3c3-a88578e15f5e</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="STRSUBSTNO_Text000_PeriodText_">
-          <DataField>STRSUBSTNO_Text000_PeriodText_</DataField>
-        </Field>
-        <Field Name="COMPANYNAME">
-          <DataField>COMPANYNAME</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter">
-          <DataField>Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter</DataField>
-        </Field>
-        <Field Name="SalespersonFilter">
-          <DataField>SalespersonFilter</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter">
-          <DataField>Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter</DataField>
-        </Field>
-        <Field Name="CustLedgEntryFilter">
-          <DataField>CustLedgEntryFilter</DataField>
-        </Field>
-        <Field Name="PageGroupNo">
-          <DataField>PageGroupNo</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser_Code">
-          <DataField>Salesperson_Purchaser_Code</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser_Name">
-          <DataField>Salesperson_Purchaser_Name</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser__Commission___">
-          <DataField>Salesperson_Purchaser__Commission___</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser__Commission___Format">
-          <DataField>Salesperson_Purchaser__Commission___Format</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry___Sales__LCY__">
-          <DataField>Cust__Ledger_Entry___Sales__LCY__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry___Sales__LCY__Format">
-          <DataField>Cust__Ledger_Entry___Sales__LCY__Format</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry___Profit__LCY__">
-          <DataField>Cust__Ledger_Entry___Profit__LCY__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry___Profit__LCY__Format">
-          <DataField>Cust__Ledger_Entry___Profit__LCY__Format</DataField>
-        </Field>
-        <Field Name="SalesCommissionAmt">
-          <DataField>SalesCommissionAmt</DataField>
-        </Field>
-        <Field Name="SalesCommissionAmtFormat">
-          <DataField>SalesCommissionAmtFormat</DataField>
-        </Field>
-        <Field Name="ProfitCommissionAmt">
-          <DataField>ProfitCommissionAmt</DataField>
-        </Field>
-        <Field Name="ProfitCommissionAmtFormat">
-          <DataField>ProfitCommissionAmtFormat</DataField>
-        </Field>
-        <Field Name="AdjProfit">
-          <DataField>AdjProfit</DataField>
-        </Field>
-        <Field Name="AdjProfitFormat">
-          <DataField>AdjProfitFormat</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt">
-          <DataField>AdjProfitCommissionAmt</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmtFormat">
-          <DataField>AdjProfitCommissionAmtFormat</DataField>
-        </Field>
-        <Field Name="Salesperson___CommissionCaption">
-          <DataField>Salesperson___CommissionCaption</DataField>
-        </Field>
-        <Field Name="CurrReport_PAGENOCaption">
-          <DataField>CurrReport_PAGENOCaption</DataField>
-        </Field>
-        <Field Name="All_amounts_are_in_LCYCaption">
-          <DataField>All_amounts_are_in_LCYCaption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Posting_Date_Caption">
-          <DataField>Cust__Ledger_Entry__Posting_Date_Caption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Document_No__Caption">
-          <DataField>Cust__Ledger_Entry__Document_No__Caption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Customer_No__Caption">
-          <DataField>Cust__Ledger_Entry__Customer_No__Caption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Sales__LCY__Caption">
-          <DataField>Cust__Ledger_Entry__Sales__LCY__Caption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Profit__LCY__Caption">
-          <DataField>Cust__Ledger_Entry__Profit__LCY__Caption</DataField>
-        </Field>
-        <Field Name="SalesCommissionAmt_Control32Caption">
-          <DataField>SalesCommissionAmt_Control32Caption</DataField>
-        </Field>
-        <Field Name="ProfitCommissionAmt_Control33Caption">
-          <DataField>ProfitCommissionAmt_Control33Caption</DataField>
-        </Field>
-        <Field Name="AdjProfit_Control39Caption">
-          <DataField>AdjProfit_Control39Caption</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt_Control45Caption">
-          <DataField>AdjProfitCommissionAmt_Control45Caption</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser__Commission___Caption">
-          <DataField>Salesperson_Purchaser__Commission___Caption</DataField>
-        </Field>
-        <Field Name="TotalCaption">
-          <DataField>TotalCaption</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Posting_Date_">
-          <DataField>Cust__Ledger_Entry__Posting_Date_</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Document_No__">
-          <DataField>Cust__Ledger_Entry__Document_No__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Customer_No__">
-          <DataField>Cust__Ledger_Entry__Customer_No__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Sales__LCY__">
-          <DataField>Cust__Ledger_Entry__Sales__LCY__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Sales__LCY__Format">
-          <DataField>Cust__Ledger_Entry__Sales__LCY__Format</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Profit__LCY__">
-          <DataField>Cust__Ledger_Entry__Profit__LCY__</DataField>
-        </Field>
-        <Field Name="Cust__Ledger_Entry__Profit__LCY__Format">
-          <DataField>Cust__Ledger_Entry__Profit__LCY__Format</DataField>
-        </Field>
-        <Field Name="SalesCommissionAmt_Control32">
-          <DataField>SalesCommissionAmt_Control32</DataField>
-        </Field>
-        <Field Name="SalesCommissionAmt_Control32Format">
-          <DataField>SalesCommissionAmt_Control32Format</DataField>
-        </Field>
-        <Field Name="ProfitCommissionAmt_Control33">
-          <DataField>ProfitCommissionAmt_Control33</DataField>
-        </Field>
-        <Field Name="ProfitCommissionAmt_Control33Format">
-          <DataField>ProfitCommissionAmt_Control33Format</DataField>
-        </Field>
-        <Field Name="AdjProfit_Control39">
-          <DataField>AdjProfit_Control39</DataField>
-        </Field>
-        <Field Name="AdjProfit_Control39Format">
-          <DataField>AdjProfit_Control39Format</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt_Control45">
-          <DataField>AdjProfitCommissionAmt_Control45</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt_Control45Format">
-          <DataField>AdjProfitCommissionAmt_Control45Format</DataField>
-        </Field>
-        <Field Name="Salesperson_Purchaser__Name">
-          <DataField>Salesperson_Purchaser__Name</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
