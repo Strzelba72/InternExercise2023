@@ -2804,7 +2804,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Cust__Ledger_Entry__Sales__LCY__.Value)</Value>
+                                  <Value>=Last(Fields!PartialInvoicesSum.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -2839,7 +2839,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Cust__Ledger_Entry__Profit__LCY__.Value)</Value>
+                                  <Value>=Last(Fields!PartialProfitSum.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3601,7 +3601,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=First(Fields!TotalSum.Value)</Value>
+                                  <Value>=Last(Fields!TotalInvoicesSum.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3621,7 +3621,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -3633,7 +3632,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!Cust__Ledger_Entry___Profit__LCY__.Value)</Value>
+                                  <Value>=Last(Fields!TotalProfitSum.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3695,7 +3694,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt.Value)</Value>
+                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -3715,6 +3714,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -4348,11 +4348,29 @@ End Function
         <Field Name="TotalCaption">
           <DataField>TotalCaption</DataField>
         </Field>
-        <Field Name="TotalSum">
-          <DataField>TotalSum</DataField>
+        <Field Name="TotalInvoicesSum">
+          <DataField>TotalInvoicesSum</DataField>
         </Field>
-        <Field Name="TotalSumFormat">
-          <DataField>TotalSumFormat</DataField>
+        <Field Name="TotalInvoicesSumFormat">
+          <DataField>TotalInvoicesSumFormat</DataField>
+        </Field>
+        <Field Name="TotalProfitSum">
+          <DataField>TotalProfitSum</DataField>
+        </Field>
+        <Field Name="TotalProfitSumFormat">
+          <DataField>TotalProfitSumFormat</DataField>
+        </Field>
+        <Field Name="PartialInvoicesSum">
+          <DataField>PartialInvoicesSum</DataField>
+        </Field>
+        <Field Name="PartialInvoicesSumFormat">
+          <DataField>PartialInvoicesSumFormat</DataField>
+        </Field>
+        <Field Name="PartialProfitSum">
+          <DataField>PartialProfitSum</DataField>
+        </Field>
+        <Field Name="PartialProfitSumFormat">
+          <DataField>PartialProfitSumFormat</DataField>
         </Field>
         <Field Name="Cust__Ledger_Entry__Posting_Date_">
           <DataField>Cust__Ledger_Entry__Posting_Date_</DataField>

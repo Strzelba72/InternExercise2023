@@ -109,18 +109,31 @@ report 50100 "ITMS Report"
             column(TotalCaption; TotalCaptionLbl)
             {
             }
-            column(TotalSum; TotalSumCalc)
-            {
 
-            }
             dataitem("Cust. Ledger Entry"; "Cust. Ledger Entry")
             {
 
                 DataItemLink = "Salesperson Code" = field(Code);
-                DataItemTableView = sorting("Posting Date") where("Document Type" = filter(Invoice | "Credit Memo"), "Sales (LCY)" = filter(<> 0));
+                DataItemTableView = sorting("Posting Date") where("Document Type" = filter(Invoice), "Sales (LCY)" = filter(<> 0));
                 //RequestFilterFields = "Posting Date";
 
                 PrintOnlyIfDetail = true;
+                column(TotalInvoicesSum; TotalSumCalcInvoiceAmount)
+                {
+                    AutoFormatType = 1;
+                }
+                column(TotalProfitSum; TotalSumCalcProfitAmount)
+                {
+                    AutoFormatType = 1;
+                }
+                column(PartialInvoicesSum; PartialSumCalcInvoiceAmount)
+                {
+                    AutoFormatType = 1;
+                }
+                column(PartialProfitSum; PartialSumCalcProfitAmount)
+                {
+                    AutoFormatType = 1;
+                }
                 dataitem("Detailed Cust. Ledg. Entry"; "Detailed Cust. Ledg. Entry")
 
                 {
@@ -162,24 +175,54 @@ report 50100 "ITMS Report"
                     column(Salesperson_Purchaser__Name; "Salesperson/Purchaser".Name)
                     {
                     }
+
+
                     trigger OnAfterGetRecord()
                     var
                         CostCalcMgt: Codeunit "Cost Calculation Management";
                     begin
-
+                        TotalSumCalcInvoiceAmountBoolen := true;
                         SalesCommissionAmt := Round(("Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1)) / ("Cust. Ledger Entry"."Sales (LCY)") * ("Salesperson/Purchaser"."Commission %" / 100) * "Cust. Ledger Entry"."Profit (LCY)");
                         ProfitCommissionAmt := Round("Cust. Ledger Entry"."Profit (LCY)" * "Salesperson/Purchaser"."Commission %" / 100);
-                        AdjProfit := "Cust. Ledger Entry"."Profit (LCY)" + CostCalcMgt.CalcCustLedgAdjmtCostLCY("Cust. Ledger Entry");
-                        AdjProfitCommissionAmt := Round(AdjProfit * "Salesperson/Purchaser"."Commission %" / 100);
+                        //AdjProfit := "Cust. Ledger Entry"."Profit (LCY)" + CostCalcMgt.CalcCustLedgAdjmtCostLCY("Cust. Ledger Entry");
+                        //AdjProfitCommissionAmt := Round(AdjProfit * "Salesperson/Purchaser"."Commission %" / 100);
+                        TotalSumCalcInvoiceAmount := TotalSumCalcInvoiceAmountPost + "Cust. Ledger Entry"."Sales (LCY)";
+                        TotalSumCalcProfitAmount := TotalSumCalcProfitAmountPost + "Cust. Ledger Entry"."Profit (LCY)";
+                        PartialSumCalcInvoiceAmount := PartialSumCalcInvoiceAmountPost + "Cust. Ledger Entry"."Sales (LCY)";
+                        PartialSumCalcProfitAmount := PartialSumCalcProfitAmountPost + "Cust. Ledger Entry"."Profit (LCY)";
+
 
                     end;
 
                     trigger OnPreDataItem()
                     begin
+
+
                         ClearAmounts();
                     end;
+
+                    trigger OnPostDataItem()
+
+                    begin
+
+                        if (TotalSumCalcInvoiceAmountBoolen) then begin
+                            TotalSumCalcInvoiceAmountBoolen := false;
+                            TotalSumCalcInvoiceAmountPost += "Cust. Ledger Entry"."Sales (LCY)";
+                            TotalSumCalcProfitAmountPost += "Cust. Ledger Entry"."Profit (LCY)";
+                            PartialSumCalcInvoiceAmountPost += "Cust. Ledger Entry"."Sales (LCY)";
+                            PartialSumCalcProfitAmountPost += "Cust. Ledger Entry"."Profit (LCY)";
+                        end;
+
+
+                    end;
+
                 }
 
+                trigger OnPreDataItem()
+                begin
+
+                    ClearAmounts();
+                end;
 
 
 
@@ -187,6 +230,7 @@ report 50100 "ITMS Report"
 
             trigger OnAfterGetRecord()
             begin
+                ClearPartialSum();
                 if PrintOnlyOnePerPage then
                     PageGroupNo := PageGroupNo + 1;
             end;
@@ -195,6 +239,8 @@ report 50100 "ITMS Report"
             begin
                 PageGroupNo := 1;
                 ClearAmounts();
+
+
             end;
         }
     }
@@ -257,7 +303,17 @@ report 50100 "ITMS Report"
         PaymentAmountCaptionLbl: Label 'Payment Amount (LCY)';
         AdjProfitCommissionAmt_Control45CaptionLbl: Label 'Salesperson Commission Amount (LCY)';
         TotalCaptionLbl: Label 'Total';
-        TotalSumCalc: Decimal;
+        TotalSumCalcInvoiceAmount: Decimal;
+        TotalSumCalcInvoiceAmountPost: Decimal;
+        TotalSumCalcInvoiceAmountBoolen: Boolean;
+        TotalSumCalcProfitAmount: Decimal;
+        TotalSumCalcProfitAmountPost: Decimal;
+        PartialSumCalcInvoiceAmount: Decimal;
+        PartialSumCalcInvoiceAmountPost: Decimal;
+        PartialSumCalcProfitAmount: Decimal;
+        PartialSumCalcProfitAmountPost: Decimal;
+    //TotalSumCalcProfitAmountBoolen: Boolean;
+
 
     local procedure ClearAmounts()
     begin
@@ -265,6 +321,17 @@ report 50100 "ITMS Report"
         Clear(ProfitCommissionAmt);
         Clear(AdjProfitCommissionAmt);
         Clear(SalesCommissionAmt);
+
     end;
+
+    local procedure ClearPartialSum()
+    begin
+        Clear(PartialSumCalcInvoiceAmount);
+        Clear(PartialSumCalcInvoiceAmountPost);
+        Clear(PartialSumCalcProfitAmount);
+        Clear(PartialSumCalcProfitAmountPost);
+
+    end;
+
 }
 
