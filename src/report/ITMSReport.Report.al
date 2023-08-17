@@ -174,19 +174,12 @@ report 50100 "ITMS Report"
                     column(Cust__Ledger_Entry__Profit__LCY__; "Cust. Ledger Entry"."Profit (LCY)")
                     {
                     }
-                    column(SalesCommissionAmt_Control32; SalesCommissionAmt)
+                    column(PaymantAmountLayout; "Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1))
                     {
                         AutoFormatType = 1;
+                        //DecimalPlaces = 2 : 2;
                     }
-                    column(ProfitCommissionAmt_Control33; ProfitCommissionAmt)
-                    {
-                        AutoFormatType = 1;
-                    }
-                    column(AdjProfit_Control39; "Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1))
-                    {
-                        AutoFormatType = 1;
-                    }
-                    column(AdjProfitCommissionAmt_Control45; SalesCommissionAmt)
+                    column(SalesCommissionLayout; SalesCommissionAmt)
                     {
                         AutoFormatType = 1;
                     }
@@ -199,7 +192,6 @@ report 50100 "ITMS Report"
                     begin
                         TotalSumCalcInvoiceAmountBoolen := true;
                         SalesCommissionAmt := Round(("Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1)) / ("Cust. Ledger Entry"."Sales (LCY)") * ("Salesperson/Purchaser"."Commission %" / 100) * "Cust. Ledger Entry"."Profit (LCY)");
-                        ProfitCommissionAmt := Round("Cust. Ledger Entry"."Profit (LCY)" * "Salesperson/Purchaser"."Commission %" / 100);
                         TotalSumCalcInvoiceAmount := TotalSumCalcInvoiceAmountPost + "Cust. Ledger Entry"."Sales (LCY)";
                         TotalSumCalcProfitAmount := TotalSumCalcProfitAmountPost + "Cust. Ledger Entry"."Profit (LCY)";
                     end;

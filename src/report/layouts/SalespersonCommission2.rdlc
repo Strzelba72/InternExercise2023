@@ -40,7 +40,7 @@
                   <Width>2.88691cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.09687cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.07938cm</Width>
@@ -1451,10 +1451,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AdjProfit_Control39.Value</Value>
+                                  <Value>=Fields!PaymantAmountLayout.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
-                                    <Format>=Fields!AdjProfit_Control39Format.Value</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1463,6 +1463,9 @@
                           </Paragraphs>
                           <ZIndex>8</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -1481,10 +1484,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AdjProfitCommissionAmt_Control45.Value</Value>
+                                  <Value>=Fields!SalesCommissionLayout.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
-                                    <Format>=Fields!AdjProfitCommissionAmt_Control45Format.Value</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1493,6 +1496,9 @@
                           </Paragraphs>
                           <ZIndex>5</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1699,11 +1705,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfit_Control39.Value)</Value>
+                                  <Value>=Sum(Fields!PaymantAmountLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfit_Control39Format.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1712,6 +1718,9 @@
                           </Paragraphs>
                           <ZIndex>22</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -1730,11 +1739,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                  <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitCommissionAmt_Control45Format.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1743,6 +1752,9 @@
                           </Paragraphs>
                           <ZIndex>19</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -1909,10 +1921,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                  <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2118,11 +2131,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfit_Control39.Value)</Value>
+                                  <Value>=Sum(Fields!PaymantAmountLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitFormat.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2131,6 +2144,9 @@
                           </Paragraphs>
                           <ZIndex>46</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -2149,11 +2165,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                  <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitCommissionAmtFormat.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -2162,6 +2178,9 @@
                           </Paragraphs>
                           <ZIndex>43</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <BackgroundColor>White</BackgroundColor>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
@@ -2621,7 +2640,7 @@
             </SortExpressions>
             <Top>1.08381cm</Top>
             <Height>4.59838cm</Height>
-            <Width>18.12517cm</Width>
+            <Width>18.10767cm</Width>
             <Visibility>
               <Hidden>=Not(Fields!PrintOnlyOnePerPage.Value)</Hidden>
             </Visibility>
@@ -3867,10 +3886,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AdjProfit_Control39.Value</Value>
+                                  <Value>=Fields!PaymantAmountLayout.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
-                                    <Format>=Fields!AdjProfit_Control39Format.Value</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3879,6 +3898,9 @@
                           </Paragraphs>
                           <ZIndex>8</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -3897,10 +3919,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!AdjProfitCommissionAmt_Control45.Value</Value>
+                                  <Value>=Fields!SalesCommissionLayout.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
-                                    <Format>=Fields!AdjProfitCommissionAmt_Control45Format.Value</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3909,6 +3931,9 @@
                           </Paragraphs>
                           <ZIndex>5</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4052,11 +4077,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfit_Control39.Value)</Value>
+                                  <Value>=Sum(Fields!PaymantAmountLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfit_Control39Format.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4065,6 +4090,9 @@
                           </Paragraphs>
                           <ZIndex>22</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -4083,11 +4111,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                  <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitCommissionAmt_Control45Format.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4096,6 +4124,9 @@
                           </Paragraphs>
                           <ZIndex>19</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4174,10 +4205,11 @@
                                           <Paragraph>
                                             <TextRuns>
                                               <TextRun>
-                                                <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                                <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                                 <Style>
                                                   <FontSize>7pt</FontSize>
                                                   <FontWeight>Bold</FontWeight>
+                                                  <Format>0.00;(0.00)</Format>
                                                 </Style>
                                               </TextRun>
                                             </TextRuns>
@@ -4368,11 +4400,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfit_Control39.Value)</Value>
+                                  <Value>=Sum(Fields!PaymantAmountLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitFormat.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4381,6 +4413,9 @@
                           </Paragraphs>
                           <ZIndex>46</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>0.075cm</PaddingRight>
@@ -4399,11 +4434,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!AdjProfitCommissionAmt_Control45.Value)</Value>
+                                  <Value>=Sum(Fields!SalesCommissionLayout.Value)</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
-                                    <Format>=First(Fields!AdjProfitCommissionAmtFormat.Value)</Format>
+                                    <Format>0.00;(0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -4412,6 +4447,9 @@
                           </Paragraphs>
                           <ZIndex>43</ZIndex>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.075cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
@@ -4690,7 +4728,7 @@
             <Top>5.70603cm</Top>
             <Left>0.09078cm</Left>
             <Height>4.59838cm</Height>
-            <Width>17.85815cm</Width>
+            <Width>17.85814cm</Width>
             <ZIndex>3</ZIndex>
             <Visibility>
               <Hidden>=Fields!PrintOnlyOnePerPage.Value</Hidden>
@@ -4701,7 +4739,7 @@
         <Height>10.45462cm</Height>
         <Style />
       </Body>
-      <Width>18.15cm</Width>
+      <Width>18.17809cm</Width>
       <Page>
         <PageHeader>
           <Height>2.22222cm</Height>
@@ -5108,29 +5146,17 @@ End Function
         <Field Name="Cust__Ledger_Entry__Profit__LCY__Format">
           <DataField>Cust__Ledger_Entry__Profit__LCY__Format</DataField>
         </Field>
-        <Field Name="SalesCommissionAmt_Control32">
-          <DataField>SalesCommissionAmt_Control32</DataField>
+        <Field Name="PaymantAmountLayout">
+          <DataField>PaymantAmountLayout</DataField>
         </Field>
-        <Field Name="SalesCommissionAmt_Control32Format">
-          <DataField>SalesCommissionAmt_Control32Format</DataField>
+        <Field Name="PaymantAmountLayoutFormat">
+          <DataField>PaymantAmountLayoutFormat</DataField>
         </Field>
-        <Field Name="ProfitCommissionAmt_Control33">
-          <DataField>ProfitCommissionAmt_Control33</DataField>
+        <Field Name="SalesCommissionLayout">
+          <DataField>SalesCommissionLayout</DataField>
         </Field>
-        <Field Name="ProfitCommissionAmt_Control33Format">
-          <DataField>ProfitCommissionAmt_Control33Format</DataField>
-        </Field>
-        <Field Name="AdjProfit_Control39">
-          <DataField>AdjProfit_Control39</DataField>
-        </Field>
-        <Field Name="AdjProfit_Control39Format">
-          <DataField>AdjProfit_Control39Format</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt_Control45">
-          <DataField>AdjProfitCommissionAmt_Control45</DataField>
-        </Field>
-        <Field Name="AdjProfitCommissionAmt_Control45Format">
-          <DataField>AdjProfitCommissionAmt_Control45Format</DataField>
+        <Field Name="SalesCommissionLayoutFormat">
+          <DataField>SalesCommissionLayoutFormat</DataField>
         </Field>
         <Field Name="Salesperson_Purchaser__Name">
           <DataField>Salesperson_Purchaser__Name</DataField>
