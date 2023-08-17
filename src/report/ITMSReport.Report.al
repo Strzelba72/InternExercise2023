@@ -6,7 +6,7 @@ report 50100 "ITMS Report"
     RDLCLayout = './src/report/layouts/SalespersonCommission2.rdlc';
     //Caption = 'Report Payment Commission';
     Caption = 'Report';
-    ;
+
 
     dataset
     {
@@ -27,7 +27,7 @@ report 50100 "ITMS Report"
             column(SalespersonFilter; SalespersonFilter)
             {
             }
-            column(Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter; "Cust. Ledger Entry".TableCaption + ': ' + CustLedgEntryFilter)
+            column(Cust__Ledger_Entry__TABLECAPTION__________CustLedgEntryFilter; "Detailed Cust. Ledg. Entry".TableCaption + ': ' + CustLedgEntryFilter)
             {
             }
             column(CustLedgEntryFilter; CustLedgEntryFilter)
@@ -79,16 +79,16 @@ report 50100 "ITMS Report"
             column(Cust__Ledger_Entry__Posting_Date_Caption; Cust__Ledger_Entry__Posting_Date_CaptionLbl)
             {
             }
-            column(Cust__Ledger_Entry__Document_No__Caption; 'Invoice No.')
+            column(Invoice_No__Caption; Invoice_No)
             {
             }
-            column(Cust__Ledger_Entry__Customer_No__Caption; 'Payment No.')
+            column(Payment_No__Caption; Payment_No)
             {
             }
-            column(Cust__Ledger_Entry__Sales__LCY__Caption; 'Invoice Amount (LCY)')
+            column(Invoice_Amount__LCY__Caption; Invoice_Amount__LCY)
             {
             }
-            column(Cust__Ledger_Entry__Profit__LCY__Caption; "Cust. Ledger Entry".FieldCaption("Profit (LCY)"))
+            column(Profit_Amount__Caption; "Cust. Ledger Entry".FieldCaption("Profit (LCY)"))
             {
             }
             column(SalesCommissionAmt_Control32Caption; SalesCommissionAmt_Control32CaptionLbl)
@@ -97,10 +97,10 @@ report 50100 "ITMS Report"
             column(ProfitCommissionAmt_Control33Caption; ProfitCommissionAmt_Control33CaptionLbl)
             {
             }
-            column(AdjProfit_Control39Caption; PaymentAmountCaptionLbl)
+            column(PaymentAmountCaption; PaymentAmountCaptionLbl)
             {
             }
-            column(AdjProfitCommissionAmt_Control45Caption; AdjProfitCommissionAmt_Control45CaptionLbl)
+            column(SalespersonCommissionAmountCaption; SalespersonCommissionAmountCaptionLbl)
             {
             }
             column(Salesperson_Purchaser__Commission___Caption; FieldCaption("Commission %"))
@@ -113,13 +113,24 @@ report 50100 "ITMS Report"
             {
 
             }
+            column(SalesPearsonLabelTotalLayout1; SalesPearsonLabelTotal1)
+            {
+
+            }
+            column(SalesPearsonLabelTotalLayout2; SalesPearsonLabelTotal2)
+            {
+
+            }
+            column(PrintOnlyOnePerPage; PrintOnlyOnePerPage)
+            {
+
+            }
 
             dataitem("Cust. Ledger Entry"; "Cust. Ledger Entry")
             {
 
                 DataItemLink = "Salesperson Code" = field(Code);
                 DataItemTableView = sorting("Posting Date") where("Document Type" = filter(Invoice), "Sales (LCY)" = filter(<> 0));
-                //RequestFilterFields = "Posting Date";
 
                 PrintOnlyIfDetail = true;
                 column(TotalInvoicesSum; TotalSumCalcInvoiceAmount)
@@ -144,7 +155,7 @@ report 50100 "ITMS Report"
                     DataItemLink = "Cust. Ledger Entry No." = field("Entry No.");
                     DataItemLinkReference = "Cust. Ledger Entry";
                     DataItemTableView = sorting("Posting Date", "Document No.") where("Entry Type" = filter("Application"), "Document Type" = filter("Payment"));
-                    //RequestFilterFields = "Posting Date";
+                    RequestFilterFields = "Posting Date";
                     column(Cust__Ledger_Entry__Posting_Date_; Format("Detailed Cust. Ledg. Entry"."Posting Date"))
                     {
                     }
@@ -185,8 +196,6 @@ report 50100 "ITMS Report"
 
 
                     trigger OnAfterGetRecord()
-                    var
-                        CostCalcMgt: Codeunit "Cost Calculation Management";
                     begin
                         TotalSumCalcInvoiceAmountBoolen := true;
                         SalesCommissionAmt := Round(("Detailed Cust. Ledg. Entry"."Amount (LCY)" * (-1)) / ("Cust. Ledger Entry"."Sales (LCY)") * ("Salesperson/Purchaser"."Commission %" / 100) * "Cust. Ledger Entry"."Profit (LCY)");
@@ -308,7 +317,7 @@ report 50100 "ITMS Report"
         SalesCommissionAmt_Control32CaptionLbl: Label 'Sales Commission (LCY)';
         ProfitCommissionAmt_Control33CaptionLbl: Label 'Profit Commission (LCY)';
         PaymentAmountCaptionLbl: Label 'Payment Amount (LCY)';
-        AdjProfitCommissionAmt_Control45CaptionLbl: Label 'Salesperson Commission Amount (LCY)';
+        SalespersonCommissionAmountCaptionLbl: Label 'Salesperson Commission Amount (LCY)';
         TotalCaptionLbl: Label 'Total';
         TotalSumCalcInvoiceAmount: Decimal;
         TotalSumCalcInvoiceAmountPost: Decimal;
@@ -319,6 +328,11 @@ report 50100 "ITMS Report"
         PartialSumCalcInvoiceAmountPost: Decimal;
         PartialSumCalcProfitAmount: Decimal;
         PartialSumCalcProfitAmountPost: Decimal;
+        SalesPearsonLabelTotal1: Label 'Salesperson: ';
+        SalesPearsonLabelTotal2: Label ' Comission Total';
+        Invoice_No: Label 'Invoice No.';
+        Payment_No: Label 'Payment No.';
+        Invoice_Amount__LCY: Label 'Invoice Amount (LCY)';
 
 
 
