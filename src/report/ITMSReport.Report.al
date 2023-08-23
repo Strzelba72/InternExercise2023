@@ -12,13 +12,13 @@ report 50100 "ITMS Report"
     {
         dataitem("Salesperson/Purchaser"; "Salesperson/Purchaser")
         {
-            DataItemTableView = SORTING(Code);
+            DataItemTableView = sorting(Code);
             PrintOnlyIfDetail = true;
             RequestFilterFields = "Code";
             column(STRSUBSTNO_Text000_PeriodText_; StrSubstNo(Text000, PeriodText))
             {
             }
-            column(COMPANYNAME; COMPANYPROPERTY.DisplayName())
+            column(COMPANYNAME; CompanyProperty.DisplayName())
             {
             }
             column(Salesperson_Purchaser__TABLECAPTION__________SalespersonFilter; TableCaption + ': ' + SalespersonFilter)
@@ -79,13 +79,13 @@ report 50100 "ITMS Report"
             column(Cust__Ledger_Entry__Posting_Date_Caption; Cust__Ledger_Entry__Posting_Date_CaptionLbl)
             {
             }
-            column(Invoice_No__Caption; Invoice_No)
+            column(Invoice_No__Caption; Invoice_NoLbl)
             {
             }
-            column(Payment_No__Caption; Payment_No)
+            column(Payment_No__Caption; Payment_NoLbl)
             {
             }
-            column(Invoice_Amount__LCY__Caption; Invoice_Amount__LCY)
+            column(Invoice_Amount__LCY__Caption; Invoice_Amount__LCYLbl)
             {
             }
             column(Profit_Amount__Caption; "Cust. Ledger Entry".FieldCaption("Profit (LCY)"))
@@ -109,19 +109,19 @@ report 50100 "ITMS Report"
             column(TotalCaption; TotalCaptionLbl)
             {
             }
-            column(PrintDetailsLayout; PrintLDetails)
+            column(PrintDetailsLayout; PrintLDetailsOption)
             {
 
             }
-            column(SalesPearsonLabelTotalLayout1; SalesPearsonLabelTotal1)
+            column(SalesPearsonLabelTotalLayout1; SalesPearsonLabelTotal1Lbl)
             {
 
             }
-            column(SalesPearsonLabelTotalLayout2; SalesPearsonLabelTotal2)
+            column(SalesPearsonLabelTotalLayout2; SalesPearsonLabelTotal2Lbl)
             {
 
             }
-            column(PrintOnlyOnePerPage; PrintOnlyOnePerPage)
+            column(PrintOnlyOnePerPage; PrintOnlyOnePerPageOption)
             {
 
             }
@@ -154,7 +154,7 @@ report 50100 "ITMS Report"
                 {
                     DataItemLink = "Cust. Ledger Entry No." = field("Entry No.");
                     DataItemLinkReference = "Cust. Ledger Entry";
-                    DataItemTableView = sorting("Posting Date", "Document No.") where("Entry Type" = filter("Application"), "Document Type" = filter("Payment"));
+                    DataItemTableView = sorting("Posting Date", "Document No.") where("Entry Type" = filter(Application), "Document Type" = filter(Payment));
                     RequestFilterFields = "Posting Date";
                     column(Cust__Ledger_Entry__Posting_Date_; Format("Detailed Cust. Ledg. Entry"."Posting Date"))
                     {
@@ -231,7 +231,7 @@ report 50100 "ITMS Report"
             trigger OnAfterGetRecord()
             begin
                 ClearPartialSum();
-                if PrintOnlyOnePerPage then
+                if PrintOnlyOnePerPageOption then
                     PageGroupNo := PageGroupNo + 1;
             end;
 
@@ -252,18 +252,18 @@ report 50100 "ITMS Report"
 
         layout
         {
-            area(content)
+            area(Content)
             {
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(PrintOnlyOnePerPage; PrintOnlyOnePerPage)
+                    field(PrintOnlyOnePerPage; PrintOnlyOnePerPageOption)
                     {
                         ApplicationArea = Suite;
                         Caption = 'New Page per Person';
                         ToolTip = 'Specifies if each person''s information is printed on a new page if you have chosen two or more persons to be included in the report.';
                     }
-                    field(PrintLDetails; PrintLDetails)
+                    field(PrintLDetails; PrintLDetailsOption)
                     {
                         ApplicationArea = Suite;
                         Caption = 'Print less Details';
@@ -299,8 +299,8 @@ report 50100 "ITMS Report"
         ProfitCommissionAmt: Decimal;
         AdjProfitCommissionAmt: Decimal;
         SalesCommissionAmt: Decimal;
-        PrintOnlyOnePerPage: Boolean;
-        PrintLDetails: Boolean;
+        PrintOnlyOnePerPageOption: Boolean;
+        PrintLDetailsOption: Boolean;
         PageGroupNo: Integer;
         Salesperson___CommissionCaptionLbl: Label 'Salesperson - Payment Commission';
         CurrReport_PAGENOCaptionLbl: Label 'Page';
@@ -320,11 +320,11 @@ report 50100 "ITMS Report"
         PartialSumCalcInvoiceAmountPost: Decimal;
         PartialSumCalcProfitAmount: Decimal;
         PartialSumCalcProfitAmountPost: Decimal;
-        SalesPearsonLabelTotal1: Label 'Salesperson: ';
-        SalesPearsonLabelTotal2: Label ' Comission Total';
-        Invoice_No: Label 'Invoice No.';
-        Payment_No: Label 'Payment No.';
-        Invoice_Amount__LCY: Label 'Invoice Amount (LCY)';
+        SalesPearsonLabelTotal1Lbl: Label 'Salesperson: ';
+        SalesPearsonLabelTotal2Lbl: Label ' Comission Total';
+        Invoice_NoLbl: Label 'Invoice No.';
+        Payment_NoLbl: Label 'Payment No.';
+        Invoice_Amount__LCYLbl: Label 'Invoice Amount (LCY)';
 
 
 
@@ -345,9 +345,6 @@ report 50100 "ITMS Report"
         Clear(PartialSumCalcProfitAmountPost);
 
     end;
-
-
-
 
 }
 
