@@ -1,4 +1,4 @@
-codeunit 50100 SeriesLotNumbers
+codeunit 50100 "Series Lot Numbers"
 {
     trigger OnRun()
     begin
@@ -18,53 +18,51 @@ codeunit 50100 SeriesLotNumbers
 
         case TableNumber of
             DATABASE::"Sales Header":
-                begin
-
-                    ReservEntry.SetRange("Source ID", SourceID);
-                    ReservEntry.SetRange("Source Type", Database::"Sales Line");
-                    ReservEntry.SetRange("Source Subtype", SalesHeaderDocumentType);
-
-                    if ReservEntry.FindSet() then
-                        repeat
-                            TempTrackingSpecification.Init();
-                            TempTrackingSpecification."Entry No." := incrementNumber;
-                            TempTrackingSpecification."Lot No." := ReservEntry."Lot No.";
-                            TempTrackingSpecification."Serial No." := ReservEntry."Serial No.";
-                            TempTrackingSpecification."Quantity (Base)" := ReservEntry."Quantity (Base)" * (-1);
-                            TempTrackingSpecification."Source Ref. No." := ReservEntry."Source Ref. No.";
-                            TempTrackingSpecification.Insert();
-                            incrementNumber += 1;
-                        until ReservEntry.Next() = 0;
-
-                end;
-
-
+                RetrieveItemTrackingFromSalesHeader(SourceID, SalesHeaderDocumentType, TempTrackingSpecification, incrementNumber);
             DATABASE::"Sales Invoice Header":
-                begin
-
-                    ValueEntries.SetRange("Document No.", SourceID);
-                    ValueEntries.SetRange("Document Type", ValueEntries."Document Type"::"Sales Invoice");
-                    if ValueEntries.FindSet() then
-                        repeat
-                            ItemLedgEntry.Get(ValueEntries."Item Ledger Entry No.");
-                            TempTrackingSpecification.Init();
-                            TempTrackingSpecification."Entry No." := incrementNumber;
-                            TempTrackingSpecification."Lot No." := ItemLedgEntry."Lot No.";
-                            TempTrackingSpecification."Serial No." := ItemLedgEntry."Serial No.";
-                            TempTrackingSpecification."Quantity (Base)" := ItemLedgEntry."Quantity" * (-1);
-                            TempTrackingSpecification."Source Ref. No." := ItemLedgEntry."Document Line No.";
-                            TempTrackingSpecification.Insert();
-                            incrementNumber += 1;
-                        until ValueEntries.Next() = 0;
-
-
-
-                end;
-
+                RetrieveItemTrackingFromSalesInvoiceHeader(SourceID, TempTrackingSpecification, incrementNumber);
             else
                 exit;
         end;
 
+    end;
+
+    local procedure RetrieveItemTrackingFromSalesHeader(SourceID: Code[20]; SalesHeaderDocumentType: Enum "Sales Document Type"; var TempTrackingSpecification: Record "Tracking Specification" temporary; var incrementNumber: Integer)
+    begin
+        ReservEntry.SetRange("Source ID", SourceID);
+        ReservEntry.SetRange("Source Type", Database::"Sales Line");
+        ReservEntry.SetRange("Source Subtype", SalesHeaderDocumentType);
+
+        if ReservEntry.FindSet() then
+            repeat
+                TempTrackingSpecification.Init();
+                TempTrackingSpecification."Entry No." := incrementNumber;
+                TempTrackingSpecification."Lot No." := ReservEntry."Lot No.";
+                TempTrackingSpecification."Serial No." := ReservEntry."Serial No.";
+                TempTrackingSpecification."Quantity (Base)" := ReservEntry."Quantity (Base)" * (-1);
+                TempTrackingSpecification."Source Ref. No." := ReservEntry."Source Ref. No.";
+                TempTrackingSpecification.Insert();
+                incrementNumber += 1;
+            until ReservEntry.Next() = 0;
+    end;
+
+    local procedure RetrieveItemTrackingFromSalesInvoiceHeader(SourceID: Code[20]; var TempTrackingSpecification: Record "Tracking Specification" temporary; var incrementNumber: Integer)
+
+    begin
+        ValueEntries.SetRange("Document No.", SourceID);
+        ValueEntries.SetRange("Document Type", ValueEntries."Document Type"::"Sales Invoice");
+        if ValueEntries.FindSet() then
+            repeat
+                ItemLedgEntry.Get(ValueEntries."Item Ledger Entry No.");
+                TempTrackingSpecification.Init();
+                TempTrackingSpecification."Entry No." := incrementNumber;
+                TempTrackingSpecification."Lot No." := ItemLedgEntry."Lot No.";
+                TempTrackingSpecification."Serial No." := ItemLedgEntry."Serial No.";
+                TempTrackingSpecification."Quantity (Base)" := ItemLedgEntry."Quantity" * (-1);
+                TempTrackingSpecification."Source Ref. No." := ItemLedgEntry."Document Line No.";
+                TempTrackingSpecification.Insert();
+                incrementNumber += 1;
+            until ValueEntries.Next() = 0;
     end;
 
 

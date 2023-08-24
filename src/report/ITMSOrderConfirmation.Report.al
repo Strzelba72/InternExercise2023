@@ -587,7 +587,7 @@ report 50101 "ITMS Order Confirmation"
                     if "Line Discount %" = 0 then
                         LineDiscountPctText := ''
                     else
-                        LineDiscountPctText := StrSubstNo('%1%', -Round("Line Discount %", 0.1));
+                        LineDiscountPctText := StrSubstNo(SubStringLbl, -Round("Line Discount %", 0.1));
 
                     if DisplayAssemblyInformation then
                         AsmInfoExistsForLine := AsmToOrderExists(AsmHeader);
@@ -903,12 +903,12 @@ report 50101 "ITMS Order Confirmation"
 
             trigger OnAfterGetRecord()
             var
-                CurrencyExchangeRate: Record "Currency Exchange Rate";
                 Currency: Record Currency;
+                CurrencyExchangeRate: Record "Currency Exchange Rate";
                 GeneralLedgerSetup: Record "General Ledger Setup";
                 ArchiveManagement: Codeunit ArchiveManagement;
                 SalesPost: Codeunit "Sales-Post";
-                SeriesLotNumbersCodeunit: Codeunit SeriesLotNumbers;
+                SeriesLotNumbersCodeunit: Codeunit "Series Lot Numbers";
             begin
                 TempTrackingSpecification.Reset();
                 TempTrackingSpecification.DeleteAll();
@@ -927,7 +927,7 @@ report 50101 "ITMS Order Confirmation"
                 if not IsReportInPreviewMode() then
                     Codeunit.Run(Codeunit::"Sales-Printed", Header);
 
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCodeunit.GetLanguageIdOrDefault("Language Code");
                 FormatAddr.SetLanguageCode("Language Code");
 
                 CalcFields("Work Description");
@@ -962,10 +962,10 @@ report 50101 "ITMS Order Confirmation"
                 if BillToContact.Get("Bill-to Contact No.") then;
 
                 if not IsReportInPreviewMode() and
-                   (CurrReport.UseRequestPage and ArchiveDocument or
+                   (CurrReport.UseRequestPage and ArchiveDocumentLoc or
                     not CurrReport.UseRequestPage and SalesSetup."Archive Orders")
                 then
-                    ArchiveManagement.StoreSalesDocument(Header, LogInteraction);
+                    ArchiveManagement.StoreSalesDocument(Header, LogInteractionLoc);
 
                 TotalSubTotal := 0;
                 TotalInvDiscAmount := 0;
@@ -989,7 +989,7 @@ report 50101 "ITMS Order Confirmation"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(LogInteraction; LogInteraction)
+                    field(LogInteraction; LogInteractionLoc)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Log Interaction';
@@ -1002,7 +1002,7 @@ report 50101 "ITMS Order Confirmation"
                         Caption = 'Show Assembly Components';
                         ToolTip = 'Specifies if you want the report to include information about components that were used in linked assembly orders that supplied the item(s) being sold. (Only possible for RDLC report layout.)';
                     }
-                    field(ArchiveDocument; ArchiveDocument)
+                    field(ArchiveDocument; ArchiveDocumentLoc)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Archive Document';
@@ -1010,8 +1010,8 @@ report 50101 "ITMS Order Confirmation"
 
                         trigger OnValidate()
                         begin
-                            if not ArchiveDocument then
-                                LogInteraction := false;
+                            if not ArchiveDocumentLoc then
+                                LogInteractionLoc := false;
                         end;
                     }
                 }
@@ -1025,7 +1025,7 @@ report 50101 "ITMS Order Confirmation"
         trigger OnInit()
         begin
             LogInteractionEnable := true;
-            ArchiveDocument := SalesSetup."Archive Orders";
+            ArchiveDocumentLoc := SalesSetup."Archive Orders";
 
             OnAfterOnInit(Header);
         end;
@@ -1033,7 +1033,7 @@ report 50101 "ITMS Order Confirmation"
         trigger OnOpenPage()
         begin
             InitLogInteraction();
-            LogInteractionEnable := LogInteraction;
+            LogInteractionEnable := LogInteractionLoc;
         end;
     }
 
@@ -1052,7 +1052,7 @@ report 50101 "ITMS Order Confirmation"
 
     trigger OnPostReport()
     begin
-        if LogInteraction and not IsReportInPreviewMode() then
+        if LogInteractionLoc and not IsReportInPreviewMode() then
             if Header.FindSet() then
                 repeat
                     Header.CalcFields("No. of Archived Versions");
@@ -1082,37 +1082,37 @@ report 50101 "ITMS Order Confirmation"
     end;
 
     var
-        GLSetup: Record "General Ledger Setup";
+        AsmHeader: Record "Assembly Header";
         CompanyBankAccount: Record "Bank Account";
         CompanyInfo: Record "Company Information";
         DummyCompanyInfo: Record "Company Information";
-        SalesSetup: Record "Sales & Receivables Setup";
-        Cust: Record Customer;
-        RespCenter: Record "Responsibility Center";
-        AsmHeader: Record "Assembly Header";
-        SellToContact: Record Contact;
         BillToContact: Record Contact;
-        Language: Codeunit Language;
+        SellToContact: Record Contact;
+        Cust: Record Customer;
+        GLSetup: Record "General Ledger Setup";
+        RespCenter: Record "Responsibility Center";
+        SalesSetup: Record "Sales & Receivables Setup";
+        TempTrackingSpecification: Record "Tracking Specification" temporary;
+        AutoFormat: Codeunit "Auto Format";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
+        LanguageCodeunit: Codeunit Language;
         SegManagement: Codeunit SegManagement;
-        AutoFormat: Codeunit "Auto Format";
-        WorkDescriptionInstream: InStream;
-        LineDiscountPctText: Text;
-        MoreLines: Boolean;
-        CopyText: Text[30];
-        TransHeaderAmount: Decimal;
+        AsmInfoExistsForLine: Boolean;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        AsmInfoExistsForLine: Boolean;
-        CompanyLogoPosition: Integer;
-        CalculatedExchRate: Decimal;
-        ExchangeRateText: Text;
-        VATClauseText: Text;
-        PrevLineAmount: Decimal;
-        PmtDiscText: Text;
+        MoreLines: Boolean;
         ShowWorkDescription: Boolean;
-        WorkDescriptionLine: Text;
+        CalculatedExchRate: Decimal;
+        PrevLineAmount: Decimal;
+        TransHeaderAmount: Decimal;
+        WorkDescriptionInstream: InStream;
+        CompanyLogoPosition: Integer;
+        BillToContactEmailLbl: Label 'Bill-to Contact E-Mail';
+        BillToContactMobilePhoneNoLbl: Label 'Bill-to Contact Mobile Phone No.';
+        BillToContactPhoneNoLbl: Label 'Bill-to Contact Phone No.';
+        BodyLbl: Label 'Thank you for your business. Your order confirmation is attached to this message.';
+        ClosingLbl: Label 'Sincerely';
 
         CompanyInfoBankAccNoLbl: Label 'Account No.';
         CompanyInfoBankNameLbl: Label 'Bank';
@@ -1120,88 +1120,89 @@ report 50101 "ITMS Order Confirmation"
         CompanyInfoPhoneNoLbl: Label 'Phone No.';
         CopyLbl: Label 'Copy';
         EMailLbl: Label 'Email';
+        ExchangeRateTxt: Label 'Exchange rate: %1/%2', Comment = '%1 and %2 are both amounts.';
+        GreetingLbl: Label 'Hello';
         HomePageLbl: Label 'Home Page';
         InvDiscBaseAmtLbl: Label 'Invoice Discount Base Amount';
         InvDiscountAmtLbl: Label 'Invoice Discount';
         InvNoLbl: Label 'Order No.';
+        LCYTxt: Label ' (LCY)';
         LineAmtAfterInvDiscLbl: Label 'Payment Discount on VAT';
         LocalCurrencyLbl: Label 'Local Currency';
+        NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         PageLbl: Label 'Page';
+        PmtDiscTxt: Label 'If we receive the payment before %1, you are eligible for a %2% payment discount.', Comment = '%1 Discount Due Date %2 = value of Payment Discount % ';
         PostedShipmentDateLbl: Label 'Shipment Date';
+        SellToContactEmailLbl: Label 'Sell-to Contact E-Mail';
+        SellToContactMobilePhoneNoLbl: Label 'Sell-to Contact Mobile Phone No.';
+        SellToContactPhoneNoLbl: Label 'Sell-to Contact Phone No.';
         ShipmentLbl: Label 'Shipment';
         ShiptoAddrLbl: Label 'Ship-to Address';
+        SubStringLbl: Label '%1%', Comment = '%1% Describes level of discouunt';
         SubtotalLbl: Label 'Subtotal';
         TotalLbl: Label 'Total';
-        VATAmtSpecificationLbl: Label 'VAT Amount Specification';
-        VATAmtLbl: Label 'VAT Amount';
         VATAmountLCYLbl: Label 'VAT Amount (LCY)';
+        VATAmtLbl: Label 'VAT Amount';
+        VATAmtSpecificationLbl: Label 'VAT Amount Specification';
         VATBaseLbl: Label 'VAT Base';
         VATBaseLCYLbl: Label 'VAT Base (LCY)';
         VATClausesLbl: Label 'VAT Clause';
         VATIdentifierLbl: Label 'VAT Identifier';
         VATPercentageLbl: Label 'VAT %';
-        ExchangeRateTxt: Label 'Exchange rate: %1/%2', Comment = '%1 and %2 are both amounts.';
-        NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
-        GreetingLbl: Label 'Hello';
-        ClosingLbl: Label 'Sincerely';
-        PmtDiscTxt: Label 'If we receive the payment before %1, you are eligible for a %2% payment discount.', Comment = '%1 Discount Due Date %2 = value of Payment Discount % ';
-        BodyLbl: Label 'Thank you for your business. Your order confirmation is attached to this message.';
-        SellToContactPhoneNoLbl: Label 'Sell-to Contact Phone No.';
-        SellToContactMobilePhoneNoLbl: Label 'Sell-to Contact Mobile Phone No.';
-        SellToContactEmailLbl: Label 'Sell-to Contact E-Mail';
-        BillToContactPhoneNoLbl: Label 'Bill-to Contact Phone No.';
-        BillToContactMobilePhoneNoLbl: Label 'Bill-to Contact Mobile Phone No.';
-        BillToContactEmailLbl: Label 'Bill-to Contact E-Mail';
-        LCYTxt: Label ' (LCY)';
-        TempTrackingSpecification: Record "Tracking Specification" temporary;
+        ExchangeRateText: Text;
+        LineDiscountPctText: Text;
+        PmtDiscText: Text;
+        VATClauseText: Text;
+        WorkDescriptionLine: Text;
+        CopyText: Text[30];
 
     protected var
-        PaymentTerms: Record "Payment Terms";
         PaymentMethod: Record "Payment Method";
+        PaymentTerms: Record "Payment Terms";
         SalespersonPurchaser: Record "Salesperson/Purchaser";
         ShipmentMethod: Record "Shipment Method";
         VATClause: Record "VAT Clause";
-        CustAddr: array[8] of Text[100];
-        ShipToAddr: array[8] of Text[100];
-        CompanyAddr: array[8] of Text[100];
-        ArchiveDocument: Boolean;
+        ArchiveDocumentLoc: Boolean;
         DisplayAssemblyInformation: Boolean;
-        LogInteraction: Boolean;
-        TotalSubTotal: Decimal;
+        FirstLineHasBeenOutput: Boolean;
+        LogInteractionLoc: Boolean;
+        ShowShippingAddr: Boolean;
         TotalAmount: Decimal;
         TotalAmountInclVAT: Decimal;
         TotalAmountVAT: Decimal;
         TotalInvDiscAmount: Decimal;
         TotalPaymentDiscOnVAT: Decimal;
-        FirstLineHasBeenOutput: Boolean;
-        TotalExclVATText: Text[50];
-        TotalInclVATText: Text[50];
-        TotalText: Text[50];
-        CurrCode: Text[10];
-        CurrSymbol: Text[10];
-        FormattedLineAmount: Text;
-        FormattedQuantity: Text;
-        FormattedUnitPrice: Text;
-        FormattedVATPct: Text;
-
-        SalesPersonText: Text[50];
-        ShowShippingAddr: Boolean;
-        VATBaseLCY: Decimal;
-        VATAmountLCY: Decimal;
-        TotalVATBaseLCY: Decimal;
+        TotalSubTotal: Decimal;
         TotalVATAmountLCY: Decimal;
+        TotalVATBaseLCY: Decimal;
+        VATAmountLCY: Decimal;
+        VATBaseLCY: Decimal;
+        PaymentMethodDescLbl: Label 'Payment Method';
 
         PaymentTermsDescLbl: Label 'Payment Terms';
-        PaymentMethodDescLbl: Label 'Payment Method';
         SalesConfirmationLbl: Label 'Order Confirmation';
         SalesInvLineDiscLbl: Label 'Discount %';
         SalespersonLbl: Label 'Sales person';
         ShptMethodDescLbl: Label 'Shipment Method';
+        FormattedLineAmount: Text;
+        FormattedQuantity: Text;
+        FormattedUnitPrice: Text;
+        FormattedVATPct: Text;
+        CurrCode: Text[10];
+        CurrSymbol: Text[10];
+
+        SalesPersonText: Text[50];
+        TotalExclVATText: Text[50];
+        TotalInclVATText: Text[50];
+        TotalText: Text[50];
+        CompanyAddr: array[8] of Text[100];
+        CustAddr: array[8] of Text[100];
+        ShipToAddr: array[8] of Text[100];
 
 
     local procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Ord. Cnfrmn.") <> '';
+        LogInteractionLoc := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Ord. Cnfrmn.") <> '';
     end;
 
     local procedure DocumentCaption() DocCaption: Text[250]
@@ -1213,7 +1214,7 @@ report 50101 "ITMS Order Confirmation"
 
     procedure InitializeRequest(NewLogInteraction: Boolean; DisplayAsmInfo: Boolean)
     begin
-        LogInteraction := NewLogInteraction;
+        LogInteractionLoc := NewLogInteraction;
         DisplayAssemblyInformation := DisplayAsmInfo;
     end;
 

@@ -126,7 +126,7 @@ report 50102 "ITMS Sales - Invoice"
             column(CompanyLegalStatement; GetLegalStatement())
             {
             }
-            column(DisplayAdditionalFeeNote; DisplayAdditionalFeeNote)
+            column(DisplayAdditionalFeeNote; DisplayAdditionalFeeNoteLocal)
             {
             }
             column(CustomerAddress1; CustAddr[1])
@@ -711,7 +711,7 @@ report 50102 "ITMS Sales - Invoice"
                     JobTaskNo := "Job Task No.";
 
                     if JobTaskNo <> '' then begin
-                        JobTaskNoLbl := JobTaskNoLbl2;
+                        JobTaskNoLbl := JobTaskNo2Lbl;
                         JobTaskDescription := GetJobTaskDescription(JobNo, JobTaskNo);
                     end else begin
                         JobTaskDescription := '';
@@ -719,7 +719,7 @@ report 50102 "ITMS Sales - Invoice"
                     end;
 
                     if JobNo <> '' then
-                        JobNoLbl := JobNoLbl2
+                        JobNoLbl := JobNoLbl2Lbl
                     else
                         JobNoLbl := '';
 
@@ -969,7 +969,7 @@ report 50102 "ITMS Sales - Invoice"
 
                 trigger OnAfterGetRecord()
                 begin
-                    if not DisplayAdditionalFeeNote then
+                    if not DisplayAdditionalFeeNoteLocal then
                         CurrReport.Break();
 
                     if Number = 1 then begin
@@ -1120,16 +1120,16 @@ report 50102 "ITMS Sales - Invoice"
 
             trigger OnAfterGetRecord()
             var
-                SeriesLotNumbersCodeunit: Codeunit SeriesLotNumbers;
-                CurrencyExchangeRate: Record "Currency Exchange Rate";
-                PaymentServiceSetup: Record "Payment Service Setup";
                 Currency: Record Currency;
+                CurrencyExchangeRate: Record "Currency Exchange Rate";
                 GeneralLedgerSetup: Record "General Ledger Setup";
+                PaymentServiceSetup: Record "Payment Service Setup";
+                SeriesLotNumbersCodeunit: Codeunit "Series Lot Numbers";
             begin
                 TempTrackingSpecification.Reset();
                 TempTrackingSpecification.DeleteAll();
                 SeriesLotNumbersCodeunit.RetrieveItemTracking(Database::"Sales Invoice Header", Header."No.", 0, TempTrackingSpecification);
-                CurrReport.Language := Language.GetLanguageIdOrDefault("Language Code");
+                CurrReport.Language := LanguageCodeunit.GetLanguageIdOrDefault("Language Code");
                 FormatAddr.SetLanguageCode("Language Code");
 
                 if not IsReportInPreviewMode() then
@@ -1212,7 +1212,7 @@ report 50102 "ITMS Sales - Invoice"
                 group(Options)
                 {
                     Caption = 'Options';
-                    field(LogInteraction; LogInteraction)
+                    field(LogInteraction; LogInteractionLocal)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Log Interaction';
@@ -1225,13 +1225,13 @@ report 50102 "ITMS Sales - Invoice"
                         Caption = 'Show Assembly Components';
                         ToolTip = 'Specifies if you want the report to include information about components that were used in linked assembly orders that supplied the item(s) being sold. (Only possible for RDLC report layout.)';
                     }
-                    field(DisplayShipmentInformation; DisplayShipmentInformation)
+                    field(DisplayShipmentInformation; DisplayShipmentInformationLocal)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Shipments';
                         ToolTip = 'Specifies that shipments are shown on the document.';
                     }
-                    field(DisplayAdditionalFeeNote; DisplayAdditionalFeeNote)
+                    field(DisplayAdditionalFeeNote; DisplayAdditionalFeeNoteLocal)
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Show Additional Fee Note';
@@ -1253,7 +1253,7 @@ report 50102 "ITMS Sales - Invoice"
         trigger OnOpenPage()
         begin
             InitLogInteraction();
-            LogInteractionEnable := LogInteraction;
+            LogInteractionEnable := LogInteractionLocal;
         end;
     }
 
@@ -1272,7 +1272,7 @@ report 50102 "ITMS Sales - Invoice"
 
     trigger OnPostReport()
     begin
-        if LogInteraction and not IsReportInPreviewMode() then
+        if LogInteractionLocal and not IsReportInPreviewMode() then
             if Header.FindSet() then
                 repeat
                     if Header."Bill-to Contact No." <> '' then
@@ -1298,160 +1298,160 @@ report 50102 "ITMS Sales - Invoice"
     end;
 
     var
-        GLSetup: Record "General Ledger Setup";
         CompanyInfo: Record "Company Information";
         DummyCompanyInfo: Record "Company Information";
-        Cust: Record Customer;
-        RespCenter: Record "Responsibility Center";
-        VATClause: Record "VAT Clause";
-        SellToContact: Record Contact;
         BillToContact: Record Contact;
-        Language: Codeunit Language;
+        SellToContact: Record Contact;
+        Cust: Record Customer;
+        GLSetup: Record "General Ledger Setup";
+        RespCenter: Record "Responsibility Center";
+        TempTrackingSpecification: Record "Tracking Specification" temporary;
+        VATClause: Record "VAT Clause";
+        AutoFormat: Codeunit "Auto Format";
         FormatAddr: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
+        LanguageCodeunit: Codeunit Language;
         SegManagement: Codeunit SegManagement;
-        AutoFormat: Codeunit "Auto Format";
-        WorkDescriptionInstream: InStream;
-        JobNo: Code[20];
-        JobTaskNo: Code[20];
-        WorkDescriptionLine: Text;
-        ChecksPayableText: Text;
-        SalesPersonText: Text[50];
-        RemainingAmountTxt: Text;
-        JobNoLbl: Text;
-        JobTaskNoLbl: Text;
-        TotalAmountExclInclVATTextValue: Text;
-        MoreLines: Boolean;
-        ShowWorkDescription: Boolean;
-        TransHeaderAmount: Decimal;
         [InDataSet]
         LogInteractionEnable: Boolean;
-        CompanyLogoPosition: Integer;
+        MoreLines: Boolean;
+        ShowWorkDescription: Boolean;
+        JobNo: Code[20];
+        JobTaskNo: Code[20];
         CalculatedExchRate: Decimal;
-        PaymentInstructionsTxt: Text;
-        ExchangeRateText: Text;
         PrevLineAmount: Decimal;
-
-        SalespersonLbl: Label 'Salesperson';
+        TransHeaderAmount: Decimal;
+        WorkDescriptionInstream: InStream;
+        CompanyLogoPosition: Integer;
+        AlreadyPaidLbl: Label 'The invoice has been paid.';
+        BilledToLbl: Label 'Billed to';
+        BillToContactEmailLbl: Label 'Bill-to Contact E-Mail';
+        BillToContactMobilePhoneNoLbl: Label 'Bill-to Contact Mobile Phone No.';
+        BillToContactPhoneNoLbl: Label 'Bill-to Contact Phone No.';
+        BodyLbl: Label 'Thank you for your business. Your invoice is attached to this message.';
+        ChecksPayableLbl: Label 'Please make checks payable to %1', Comment = '%1 = company name';
+        ClosingLbl: Label 'Sincerely';
         CompanyInfoBankAccNoLbl: Label 'Account No.';
         CompanyInfoBankNameLbl: Label 'Bank';
         CompanyInfoGiroNoLbl: Label 'Giro No.';
         CompanyInfoPhoneNoLbl: Label 'Phone No.';
         CopyLbl: Label 'Copy';
         EMailLbl: Label 'Email';
+        ExchangeRateTxt: Label 'Exchange rate: %1/%2', Comment = '%1 and %2 are both amounts.';
+        FromLbl: Label 'From';
+        GreetingLbl: Label 'Hello';
         HomePageLbl: Label 'Home Page';
         InvDiscBaseAmtLbl: Label 'Invoice Discount Base Amount';
         InvDiscountAmtLbl: Label 'Invoice Discount';
         InvNoLbl: Label 'Invoice No.';
+        JobNoLbl2Lbl: Label 'Job No.';
+        JobTaskDescLbl: Label 'Job Task Description';
+        JobTaskNo2Lbl: Label 'Job Task No.';
+        LCYTxt: Label ' (LCY)';
         LineAmtAfterInvDiscLbl: Label 'Payment Discount on VAT';
         LocalCurrencyLbl: Label 'Local Currency';
+        NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
         PageLbl: Label 'Page';
+        PartiallyPaidLbl: Label 'The invoice has been partially paid. The remaining amount is %1', Comment = '%1=an amount';
         PaymentMethodDescLbl: Label 'Payment Method';
+        PmtDiscTxt: Label 'If we receive the payment before %1, you are eligible for a %2% payment discount.', Comment = '%1 Discount Due Date %2 = value of Payment Discount % ';
         PostedShipmentDateLbl: Label 'Shipment Date';
+        PriceLbl: Label 'Price';
+        PricePerLbl: Label 'Price per';
+        QtyLbl: Label 'Qty', Comment = 'Short form of Quantity';
+        QuestionsLbl: Label 'Questions?';
         SalesInvLineDiscLbl: Label 'Discount %';
         SalesInvoiceLbl: Label 'Invoice';
-        YourSalesInvoiceLbl: Label 'Your Invoice';
+
+        SalespersonLbl: Label 'Salesperson';
+        SellToContactEmailLbl: Label 'Sell-to Contact E-Mail';
+        SellToContactMobilePhoneNoLbl: Label 'Sell-to Contact Mobile Phone No.';
+        SellToContactPhoneNoLbl: Label 'Sell-to Contact Phone No.';
         ShipmentLbl: Label 'Shipment';
+        SubstringLbl: Label '%1%', Comment = '%1% describes level of discount';
         SubtotalLbl: Label 'Subtotal';
+        ThanksLbl: Label 'Thank You!';
         TotalLbl: Label 'Total';
-        VATAmtSpecificationLbl: Label 'VAT Amount Specification';
-        VATAmtLbl: Label 'VAT Amount';
+        UnitLbl: Label 'Unit';
         VATAmountLCYLbl: Label 'VAT Amount (LCY)';
+        VATAmtLbl: Label 'VAT Amount';
+        VATAmtSpecificationLbl: Label 'VAT Amount Specification';
         VATBaseLbl: Label 'VAT Base';
         VATBaseLCYLbl: Label 'VAT Base (LCY)';
         VATClausesLbl: Label 'VAT Clause';
         VATIdentifierLbl: Label 'VAT Identifier';
         VATPercentageLbl: Label 'VAT %';
-        SellToContactPhoneNoLbl: Label 'Sell-to Contact Phone No.';
-        SellToContactMobilePhoneNoLbl: Label 'Sell-to Contact Mobile Phone No.';
-        SellToContactEmailLbl: Label 'Sell-to Contact E-Mail';
-        BillToContactPhoneNoLbl: Label 'Bill-to Contact Phone No.';
-        BillToContactMobilePhoneNoLbl: Label 'Bill-to Contact Mobile Phone No.';
-        BillToContactEmailLbl: Label 'Bill-to Contact E-Mail';
-        ExchangeRateTxt: Label 'Exchange rate: %1/%2', Comment = '%1 and %2 are both amounts.';
-        NoFilterSetErr: Label 'You must specify one or more filters to avoid accidently printing all documents.';
-        GreetingLbl: Label 'Hello';
-        ClosingLbl: Label 'Sincerely';
-        PmtDiscTxt: Label 'If we receive the payment before %1, you are eligible for a %2% payment discount.', Comment = '%1 Discount Due Date %2 = value of Payment Discount % ';
-        BodyLbl: Label 'Thank you for your business. Your invoice is attached to this message.';
-        AlreadyPaidLbl: Label 'The invoice has been paid.';
-        PartiallyPaidLbl: Label 'The invoice has been partially paid. The remaining amount is %1', Comment = '%1=an amount';
-        FromLbl: Label 'From';
-        BilledToLbl: Label 'Billed to';
-        ChecksPayableLbl: Label 'Please make checks payable to %1', Comment = '%1 = company name';
-        QuestionsLbl: Label 'Questions?';
-        ThanksLbl: Label 'Thank You!';
-        JobNoLbl2: Label 'Job No.';
-        JobTaskNoLbl2: Label 'Job Task No.';
-        JobTaskDescription: Text[100];
-        JobTaskDescLbl: Label 'Job Task Description';
-        UnitLbl: Label 'Unit';
+        YourSalesInvoiceLbl: Label 'Your Invoice';
+        ChecksPayableText: Text;
+        ExchangeRateText: Text;
+        JobNoLbl: Text;
+        JobTaskNoLbl: Text;
+        PaymentInstructionsTxt: Text;
+        RemainingAmountTxt: Text;
+        TotalAmountExclInclVATTextValue: Text;
         VATClausesText: Text;
-        QtyLbl: Label 'Qty', Comment = 'Short form of Quantity';
-        PriceLbl: Label 'Price';
-        PricePerLbl: Label 'Price per';
-        LCYTxt: Label ' (LCY)';
-        SubstringLbl: Label '%1%';
         VATClauseText: Text;
-        TempTrackingSpecification: Record "Tracking Specification" temporary;
+        WorkDescriptionLine: Text;
+        SalesPersonText: Text[50];
+        JobTaskDescription: Text[100];
 
     protected var
         CompanyBankAccount: Record "Bank Account";
-        PaymentMethod: Record "Payment Method";
-        SalespersonPurchaser: Record "Salesperson/Purchaser";
-        SalesSetup: Record "Sales & Receivables Setup";
-        ShipmentMethod: Record "Shipment Method";
-        PaymentTerms: Record "Payment Terms";
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
-        CompanyAddr: array[8] of Text[100];
-        CustAddr: array[8] of Text[100];
-        ShipToAddr: array[8] of Text[100];
+        PaymentMethod: Record "Payment Method";
+        PaymentTerms: Record "Payment Terms";
+        SalesSetup: Record "Sales & Receivables Setup";
+        SalespersonPurchaser: Record "Salesperson/Purchaser";
+        ShipmentMethod: Record "Shipment Method";
+        DisplayAdditionalFeeNoteLocal: Boolean;
+        DisplayAssemblyInformation: Boolean;
+        DisplayShipmentInformationLocal: Boolean;
+        FirstLineHasBeenOutput: Boolean;
+        LogInteractionLocal: Boolean;
+        ShowShippingAddr: Boolean;
+        RemainingAmount: Decimal;
+        TotalAmount: Decimal;
+        TotalAmountExclInclVATValue: Decimal;
+        TotalAmountInclVAT: Decimal;
+        TotalAmountVAT: Decimal;
+        TotalInvDiscAmount: Decimal;
+        TotalPaymentDiscOnVAT: Decimal;
+        TotalSubTotal: Decimal;
+        TotalVATAmountLCY: Decimal;
+        TotalVATAmountOnVATAmtLine: Decimal;
+        TotalVATBaseLCY: Decimal;
+        TotalVATBaseOnVATAmtLine: Decimal;
+        VATAmountLCY: Decimal;
+        VATBaseLCY: Decimal;
+
+        PaymentTermsDescLbl: Label 'Payment Terms';
+        ShiptoAddrLbl: Label 'Ship-to Address';
+        ShptMethodDescLbl: Label 'Shipment Method';
         FormattedLineAmount: Text;
         FormattedQuantity: Text;
         FormattedUnitPrice: Text;
         FormattedVATPct: Text;
         LineDiscountPctText: Text;
         PmtDiscText: Text;
-        TotalExclVATText: Text[50];
-        TotalInclVATText: Text[50];
-        TotalSubTotal: Decimal;
-        VATBaseLCY: Decimal;
-        VATAmountLCY: Decimal;
-        DisplayAssemblyInformation: Boolean;
-        DisplayShipmentInformation: Boolean;
-        DisplayAdditionalFeeNote: Boolean;
-        FirstLineHasBeenOutput: Boolean;
-        ShowShippingAddr: Boolean;
-
-        TotalText: Text[50];
-        LogInteraction: Boolean;
-        TotalAmount: Decimal;
-        TotalAmountInclVAT: Decimal;
-        TotalAmountVAT: Decimal;
-        TotalInvDiscAmount: Decimal;
-        TotalPaymentDiscOnVAT: Decimal;
-        RemainingAmount: Decimal;
-        TotalAmountExclInclVATValue: Decimal;
-        TotalVATBaseLCY: Decimal;
-        TotalVATAmountLCY: Decimal;
-        TotalVATBaseOnVATAmtLine: Decimal;
-        TotalVATAmountOnVATAmtLine: Decimal;
         CurrCode: Text[10];
         CurrSymbol: Text[10];
+        TotalExclVATText: Text[50];
+        TotalInclVATText: Text[50];
 
-        PaymentTermsDescLbl: Label 'Payment Terms';
-        ShptMethodDescLbl: Label 'Shipment Method';
-        ShiptoAddrLbl: Label 'Ship-to Address';
+        TotalText: Text[50];
+        CompanyAddr: array[8] of Text[100];
+        CustAddr: array[8] of Text[100];
+        ShipToAddr: array[8] of Text[100];
 
     local procedure InitLogInteraction()
     begin
-        LogInteraction := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Inv.") <> '';
+        LogInteractionLocal := SegManagement.FindInteractionTemplateCode("Interaction Log Entry Document Type"::"Sales Inv.") <> '';
     end;
 
     local procedure InitializeShipmentLine()
     var
-        SalesShipmentHeader: Record "Sales Shipment Header";
         SalesShipmentBuffer2: Record "Sales Shipment Buffer";
+        SalesShipmentHeader: Record "Sales Shipment Header";
     begin
         if Line.Type = Line.Type::" " then
             exit;
@@ -1466,7 +1466,7 @@ report 50102 "ITMS Sales - Invoice"
         ShipmentLine.SetRange("Line No.", Line."Line No.");
         if ShipmentLine.FindFirst() then begin
             SalesShipmentBuffer2 := ShipmentLine;
-            if not DisplayShipmentInformation then
+            if not DisplayShipmentInformationLocal then
                 if ShipmentLine.Next() = 0 then begin
                     ShipmentLine.Get(SalesShipmentBuffer2."Document No.", SalesShipmentBuffer2."Line No.", SalesShipmentBuffer2."Entry No.");
                     ShipmentLine.Delete();
@@ -1492,7 +1492,7 @@ report 50102 "ITMS Sales - Invoice"
 
     procedure InitializeRequest(NewLogInteraction: Boolean; DisplayAsmInfo: Boolean)
     begin
-        LogInteraction := NewLogInteraction;
+        LogInteractionLocal := NewLogInteraction;
         DisplayAssemblyInformation := DisplayAsmInfo;
     end;
 
@@ -1538,9 +1538,9 @@ report 50102 "ITMS Sales - Invoice"
 
     local procedure GetLineFeeNoteOnReportHist(SalesInvoiceHeaderNo: Code[20])
     var
-        LineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist.";
         CustLedgerEntry: Record "Cust. Ledger Entry";
         Customer: Record Customer;
+        LineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist.";
     begin
         TempLineFeeNoteOnReportHist.DeleteAll();
         CustLedgerEntry.SetRange("Document Type", CustLedgerEntry."Document Type"::Invoice);
@@ -1560,7 +1560,7 @@ report 50102 "ITMS Sales - Invoice"
                 TempLineFeeNoteOnReportHist.Insert();
             until LineFeeNoteOnReportHist.Next() = 0
         else begin
-            LineFeeNoteOnReportHist.SetRange("Language Code", Language.GetUserLanguageCode());
+            LineFeeNoteOnReportHist.SetRange("Language Code", LanguageCodeunit.GetUserLanguageCode());
             if LineFeeNoteOnReportHist.FindSet() then
                 repeat
                     TempLineFeeNoteOnReportHist.Init();
@@ -1651,12 +1651,12 @@ report 50102 "ITMS Sales - Invoice"
         end;
     end;
 
-    local procedure GetJobTaskDescription(JobNo: Code[20]; JobTaskNo: Code[20]): Text[100]
+    local procedure GetJobTaskDescription(JobNoL: Code[20]; JobTaskNoL: Code[20]): Text[100]
     var
         JobTask: Record "Job Task";
     begin
-        JobTask.SetRange("Job No.", JobNo);
-        JobTask.SetRange("Job Task No.", JobTaskNo);
+        JobTask.SetRange("Job No.", JobNoL);
+        JobTask.SetRange("Job Task No.", JobTaskNoL);
         if JobTask.FindFirst() then
             exit(JobTask.Description);
 

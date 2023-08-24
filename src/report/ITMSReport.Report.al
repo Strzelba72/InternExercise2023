@@ -15,7 +15,7 @@ report 50100 "ITMS Report"
             DataItemTableView = sorting(Code);
             PrintOnlyIfDetail = true;
             RequestFilterFields = "Code";
-            column(STRSUBSTNO_Text000_PeriodText_; StrSubstNo(Text000, PeriodText))
+            column(STRSUBSTNO_Text000_PeriodText_; StrSubstNo(Text000Lbl, PeriodText))
             {
             }
             column(COMPANYNAME; CompanyProperty.DisplayName())
@@ -291,7 +291,7 @@ report 50100 "ITMS Report"
     end;
 
     var
-        Text000: Label 'Period: %1';
+        Text000Lbl: Label 'Period: %1', Comment = '%1 describes Period';
         SalespersonFilter: Text;
         CustLedgEntryFilter: Text;
         PeriodText: Text;
