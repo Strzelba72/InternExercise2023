@@ -1,11 +1,11 @@
-report 50100 "ITMS Report"
+report 50100 "ITMS Report Payment Commission"
 {
     DefaultLayout = RDLC;
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = Basic, Suite;
     RDLCLayout = './src/report/layouts/SalespersonCommission2.rdlc';
-    //Caption = 'Report Payment Commission';
-    Caption = 'Report';
+    Caption = 'Report Payment Commission';
+
 
 
     dataset
@@ -187,7 +187,6 @@ report 50100 "ITMS Report"
                     {
                     }
 
-
                     trigger OnAfterGetRecord()
                     begin
                         TotalSumCalcInvoiceAmountBoolen := true;
@@ -198,29 +197,21 @@ report 50100 "ITMS Report"
 
                     trigger OnPreDataItem()
                     begin
-
-
                         ClearAmounts();
                     end;
 
                     trigger OnPostDataItem()
-
                     begin
-
                         if (TotalSumCalcInvoiceAmountBoolen) then begin
                             TotalSumCalcInvoiceAmountBoolen := false;
                             TotalSumCalcInvoiceAmountPost += "Cust. Ledger Entry"."Sales (LCY)";
                             TotalSumCalcProfitAmountPost += "Cust. Ledger Entry"."Profit (LCY)";
                         end;
-
-
                     end;
-
                 }
 
                 trigger OnPreDataItem()
                 begin
-
                     ClearAmounts();
                 end;
 

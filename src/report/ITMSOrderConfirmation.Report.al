@@ -6,6 +6,8 @@ report 50101 "ITMS Order Confirmation"
     DefaultLayout = RDLC;
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
+    ApplicationArea = Basic, Suite;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {
@@ -38,22 +40,22 @@ report 50101 "ITMS Order Confirmation"
             column(CompanyAddress8; CompanyAddr[8])
             {
             }
-            column(CompanyHomePage; CompanyInfo."Home Page")
+            column(CompanyHomePage; CompanyInformation."Home Page")
             {
             }
-            column(CompanyEMail; CompanyInfo."E-Mail")
+            column(CompanyEMail; CompanyInformation."E-Mail")
             {
             }
-            column(CompanyPicture; DummyCompanyInfo.Picture)
+            column(CompanyPicture; DummyCompanyInformation.Picture)
             {
             }
-            column(CompanyPhoneNo; CompanyInfo."Phone No.")
+            column(CompanyPhoneNo; CompanyInformation."Phone No.")
             {
             }
             column(CompanyPhoneNo_Lbl; CompanyInfoPhoneNoLbl)
             {
             }
-            column(CompanyGiroNo; CompanyInfo."Giro No.")
+            column(CompanyGiroNo; CompanyInformation."Giro No.")
             {
             }
             column(CompanyGiroNo_Lbl; CompanyInfoGiroNoLbl)
@@ -92,34 +94,34 @@ report 50101 "ITMS Order Confirmation"
             column(CompanyLogoPosition; CompanyLogoPosition)
             {
             }
-            column(CompanyRegistrationNumber; CompanyInfo.GetRegistrationNumber())
+            column(CompanyRegistrationNumber; CompanyInformation.GetRegistrationNumber())
             {
             }
-            column(CompanyRegistrationNumber_Lbl; CompanyInfo.GetRegistrationNumberLbl())
+            column(CompanyRegistrationNumber_Lbl; CompanyInformation.GetRegistrationNumberLbl())
             {
             }
-            column(CompanyVATRegNo; CompanyInfo.GetVATRegistrationNumber())
+            column(CompanyVATRegNo; CompanyInformation.GetVATRegistrationNumber())
             {
             }
-            column(CompanyVATRegNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl())
+            column(CompanyVATRegNo_Lbl; CompanyInformation.GetVATRegistrationNumberLbl())
             {
             }
-            column(CompanyVATRegistrationNo; CompanyInfo.GetVATRegistrationNumber())
+            column(CompanyVATRegistrationNo; CompanyInformation.GetVATRegistrationNumber())
             {
             }
-            column(CompanyVATRegistrationNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl())
+            column(CompanyVATRegistrationNo_Lbl; CompanyInformation.GetVATRegistrationNumberLbl())
             {
             }
-            column(CompanyLegalOffice; CompanyInfo.GetLegalOffice())
+            column(CompanyLegalOffice; CompanyInformation.GetLegalOffice())
             {
             }
-            column(CompanyLegalOffice_Lbl; CompanyInfo.GetLegalOfficeLbl())
+            column(CompanyLegalOffice_Lbl; CompanyInformation.GetLegalOfficeLbl())
             {
             }
-            column(CompanyCustomGiro; CompanyInfo.GetCustomGiro())
+            column(CompanyCustomGiro; CompanyInformation.GetCustomGiro())
             {
             }
-            column(CompanyCustomGiro_Lbl; CompanyInfo.GetCustomGiroLbl())
+            column(CompanyCustomGiro_Lbl; CompanyInformation.GetCustomGiroLbl())
             {
             }
             column(CompanyLegalStatement; GetLegalStatement())
@@ -185,7 +187,7 @@ report 50101 "ITMS Order Confirmation"
             column(BillToContactEmail; BillToContact."E-Mail")
             {
             }
-            column(CustomerPostalBarCode; FormatAddr.PostalBarCode(1))
+            column(CustomerPostalBarCode; FormatAddress.PostalBarCode(1))
             {
             }
             column(YourReference; "Your Reference")
@@ -326,10 +328,10 @@ report 50101 "ITMS Order Confirmation"
             column(SellToPhoneNo; "Sell-to Phone No.")
             {
             }
-            column(LegalEntityType; Cust.GetLegalEntityType())
+            column(LegalEntityType; Customer.GetLegalEntityType())
             {
             }
-            column(LegalEntityType_Lbl; Cust.GetLegalEntityTypeLbl())
+            column(LegalEntityType_Lbl; Customer.GetLegalEntityTypeLbl())
             {
             }
             column(Copy_Lbl; CopyLbl)
@@ -538,8 +540,8 @@ report 50101 "ITMS Order Confirmation"
                             CurrReport.Break();
                         if not AsmInfoExistsForLine then
                             CurrReport.Break();
-                        SetRange("Document Type", AsmHeader."Document Type");
-                        SetRange("Document No.", AsmHeader."No.");
+                        SetRange("Document Type", AssemblyHeader."Document Type");
+                        SetRange("Document No.", AssemblyHeader."No.");
                     end;
                 }
                 dataitem(TrackingSpecification; "Integer")
@@ -590,7 +592,7 @@ report 50101 "ITMS Order Confirmation"
                         LineDiscountPctText := StrSubstNo(SubStringLbl, -Round("Line Discount %", 0.1));
 
                     if DisplayAssemblyInformation then
-                        AsmInfoExistsForLine := AsmToOrderExists(AsmHeader);
+                        AsmInfoExistsForLine := AsmToOrderExists(AssemblyHeader);
 
                     TransHeaderAmount += PrevLineAmount;
                     PrevLineAmount := "Line Amount";
@@ -605,7 +607,7 @@ report 50101 "ITMS Order Confirmation"
                     FormatDocument.SetSalesLine(Line, FormattedQuantity, FormattedUnitPrice, FormattedVATPct, FormattedLineAmount);
 
                     if FirstLineHasBeenOutput then
-                        Clear(DummyCompanyInfo.Picture);
+                        Clear(DummyCompanyInformation.Picture);
                     FirstLineHasBeenOutput := true;
                 end;
 
@@ -620,7 +622,7 @@ report 50101 "ITMS Order Confirmation"
                     TransHeaderAmount := 0;
                     PrevLineAmount := 0;
                     FirstLineHasBeenOutput := false;
-                    DummyCompanyInfo.Picture := CompanyInfo.Picture;
+                    DummyCompanyInformation.Picture := CompanyInformation.Picture;
                 end;
             }
             dataitem(WorkDescriptionLines; "Integer")
@@ -905,7 +907,6 @@ report 50101 "ITMS Order Confirmation"
             var
                 Currency: Record Currency;
                 CurrencyExchangeRate: Record "Currency Exchange Rate";
-                GeneralLedgerSetup: Record "General Ledger Setup";
                 ArchiveManagement: Codeunit ArchiveManagement;
                 SalesPost: Codeunit "Sales-Post";
                 SeriesLotNumbersCodeunit: Codeunit "Series Lot Numbers";
@@ -928,20 +929,20 @@ report 50101 "ITMS Order Confirmation"
                     Codeunit.Run(Codeunit::"Sales-Printed", Header);
 
                 CurrReport.Language := LanguageCodeunit.GetLanguageIdOrDefault("Language Code");
-                FormatAddr.SetLanguageCode("Language Code");
+                FormatAddress.SetLanguageCode("Language Code");
 
                 CalcFields("Work Description");
                 ShowWorkDescription := "Work Description".HasValue;
 
-                FormatAddr.GetCompanyAddr("Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
-                FormatAddr.SalesHeaderBillTo(CustAddr, Header);
-                ShowShippingAddr := FormatAddr.SalesHeaderShipTo(ShipToAddr, CustAddr, Header);
+                FormatAddress.GetCompanyAddr("Responsibility Center", ResponsibilityCenter, CompanyInformation, CompanyAddr);
+                FormatAddress.SalesHeaderBillTo(CustAddr, Header);
+                ShowShippingAddr := FormatAddress.SalesHeaderShipTo(ShipToAddr, CustAddr, Header);
 
                 if not CompanyBankAccount.Get(Header."Company Bank Account Code") then
-                    CompanyBankAccount.CopyBankFieldsFromCompanyInfo(CompanyInfo);
+                    CompanyBankAccount.CopyBankFieldsFromCompanyInfo(CompanyInformation);
 
-                if not Cust.Get("Bill-to Customer No.") then
-                    Clear(Cust);
+                if not Customer.Get("Bill-to Customer No.") then
+                    Clear(Customer);
 
                 if "Currency Code" <> '' then begin
                     CurrencyExchangeRate.FindCurrency("Posting Date", "Currency Code", 1);
@@ -963,7 +964,7 @@ report 50101 "ITMS Order Confirmation"
 
                 if not IsReportInPreviewMode() and
                    (CurrReport.UseRequestPage and ArchiveDocumentLoc or
-                    not CurrReport.UseRequestPage and SalesSetup."Archive Orders")
+                    not CurrReport.UseRequestPage and SalesReceivablesSetup."Archive Orders")
                 then
                     ArchiveManagement.StoreSalesDocument(Header, LogInteractionLoc);
 
@@ -1025,7 +1026,7 @@ report 50101 "ITMS Order Confirmation"
         trigger OnInit()
         begin
             LogInteractionEnable := true;
-            ArchiveDocumentLoc := SalesSetup."Archive Orders";
+            ArchiveDocumentLoc := SalesReceivablesSetup."Archive Orders";
 
             OnAfterOnInit(Header);
         end;
@@ -1043,11 +1044,11 @@ report 50101 "ITMS Order Confirmation"
 
     trigger OnInitReport()
     begin
-        GLSetup.Get();
-        CompanyInfo.SetAutoCalcFields(Picture);
-        CompanyInfo.Get();
-        SalesSetup.Get();
-        CompanyInfo.VerifyAndSetPaymentInfo();
+        GeneralLedgerSetup.Get();
+        CompanyInformation.SetAutoCalcFields(Picture);
+        CompanyInformation.Get();
+        SalesReceivablesSetup.Get();
+        CompanyInformation.VerifyAndSetPaymentInfo();
     end;
 
     trigger OnPostReport()
@@ -1078,23 +1079,23 @@ report 50101 "ITMS Order Confirmation"
         if not CurrReport.UseRequestPage then
             InitLogInteraction();
 
-        CompanyLogoPosition := SalesSetup."Logo Position on Documents";
+        CompanyLogoPosition := SalesReceivablesSetup."Logo Position on Documents";
     end;
 
     var
-        AsmHeader: Record "Assembly Header";
+        AssemblyHeader: Record "Assembly Header";
         CompanyBankAccount: Record "Bank Account";
-        CompanyInfo: Record "Company Information";
-        DummyCompanyInfo: Record "Company Information";
+        CompanyInformation: Record "Company Information";
+        DummyCompanyInformation: Record "Company Information";
         BillToContact: Record Contact;
         SellToContact: Record Contact;
-        Cust: Record Customer;
-        GLSetup: Record "General Ledger Setup";
-        RespCenter: Record "Responsibility Center";
-        SalesSetup: Record "Sales & Receivables Setup";
+        Customer: Record Customer;
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        ResponsibilityCenter: Record "Responsibility Center";
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
         TempTrackingSpecification: Record "Tracking Specification" temporary;
         AutoFormat: Codeunit "Auto Format";
-        FormatAddr: Codeunit "Format Address";
+        FormatAddress: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         LanguageCodeunit: Codeunit Language;
         SegManagement: Codeunit SegManagement;
@@ -1227,13 +1228,12 @@ report 50101 "ITMS Order Confirmation"
 
     local procedure FormatDocumentFields(SalesHeader: Record "Sales Header")
     begin
-        with SalesHeader do begin
-            FormatDocument.SetTotalLabels("Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalespersonPurchaser, "Salesperson Code", SalesPersonText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
-        end;
+        FormatDocument.SetTotalLabels(SalesHeader."Currency Code", TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalespersonPurchaser, SalesHeader."Salesperson Code", SalesPersonText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesHeader."Payment Terms Code", SalesHeader."Language Code");
+        FormatDocument.SetPaymentMethod(PaymentMethod, SalesHeader."Payment Method Code", SalesHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesHeader."Shipment Method Code", SalesHeader."Language Code");
+
 
         OnAfterFormatDocumentFields(SalesHeader);
     end;

@@ -7,6 +7,8 @@ report 50102 "ITMS Sales - Invoice"
     Permissions = tabledata "Sales Shipment Buffer" = rimd;
     PreviewMode = PrintLayout;
     WordMergeDataItem = Header;
+    ApplicationArea = Basic, Suite;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {
@@ -39,22 +41,22 @@ report 50102 "ITMS Sales - Invoice"
             column(CompanyAddress8; CompanyAddr[8])
             {
             }
-            column(CompanyHomePage; CompanyInfo."Home Page")
+            column(CompanyHomePage; CompanyInformation."Home Page")
             {
             }
-            column(CompanyEMail; CompanyInfo."E-Mail")
+            column(CompanyEMail; CompanyInformation."E-Mail")
             {
             }
-            column(CompanyPicture; DummyCompanyInfo.Picture)
+            column(CompanyPicture; DummyCompanyInformation.Picture)
             {
             }
-            column(CompanyPhoneNo; CompanyInfo."Phone No.")
+            column(CompanyPhoneNo; CompanyInformation."Phone No.")
             {
             }
             column(CompanyPhoneNo_Lbl; CompanyInfoPhoneNoLbl)
             {
             }
-            column(CompanyGiroNo; CompanyInfo."Giro No.")
+            column(CompanyGiroNo; CompanyInformation."Giro No.")
             {
             }
             column(CompanyGiroNo_Lbl; CompanyInfoGiroNoLbl)
@@ -93,34 +95,34 @@ report 50102 "ITMS Sales - Invoice"
             column(CompanyLogoPosition; CompanyLogoPosition)
             {
             }
-            column(CompanyRegistrationNumber; CompanyInfo.GetRegistrationNumber())
+            column(CompanyRegistrationNumber; CompanyInformation.GetRegistrationNumber())
             {
             }
-            column(CompanyRegistrationNumber_Lbl; CompanyInfo.GetRegistrationNumberLbl())
+            column(CompanyRegistrationNumber_Lbl; CompanyInformation.GetRegistrationNumberLbl())
             {
             }
-            column(CompanyVATRegNo; CompanyInfo.GetVATRegistrationNumber())
+            column(CompanyVATRegNo; CompanyInformation.GetVATRegistrationNumber())
             {
             }
-            column(CompanyVATRegNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl())
+            column(CompanyVATRegNo_Lbl; CompanyInformation.GetVATRegistrationNumberLbl())
             {
             }
-            column(CompanyVATRegistrationNo; CompanyInfo.GetVATRegistrationNumber())
+            column(CompanyVATRegistrationNo; CompanyInformation.GetVATRegistrationNumber())
             {
             }
-            column(CompanyVATRegistrationNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl())
+            column(CompanyVATRegistrationNo_Lbl; CompanyInformation.GetVATRegistrationNumberLbl())
             {
             }
-            column(CompanyLegalOffice; CompanyInfo.GetLegalOffice())
+            column(CompanyLegalOffice; CompanyInformation.GetLegalOffice())
             {
             }
-            column(CompanyLegalOffice_Lbl; CompanyInfo.GetLegalOfficeLbl())
+            column(CompanyLegalOffice_Lbl; CompanyInformation.GetLegalOfficeLbl())
             {
             }
-            column(CompanyCustomGiro; CompanyInfo.GetCustomGiro())
+            column(CompanyCustomGiro; CompanyInformation.GetCustomGiro())
             {
             }
-            column(CompanyCustomGiro_Lbl; CompanyInfo.GetCustomGiroLbl())
+            column(CompanyCustomGiro_Lbl; CompanyInformation.GetCustomGiroLbl())
             {
             }
             column(CompanyLegalStatement; GetLegalStatement())
@@ -153,7 +155,7 @@ report 50102 "ITMS Sales - Invoice"
             column(CustomerAddress8; CustAddr[8])
             {
             }
-            column(CustomerPostalBarCode; FormatAddr.PostalBarCode(1))
+            column(CustomerPostalBarCode; FormatAddress.PostalBarCode(1))
             {
             }
             column(YourReference; "Your Reference")
@@ -342,10 +344,10 @@ report 50102 "ITMS Sales - Invoice"
             column(PaymentReference_Lbl; GetPaymentReferenceLbl())
             {
             }
-            column(LegalEntityType; Cust.GetLegalEntityType())
+            column(LegalEntityType; Customer.GetLegalEntityType())
             {
             }
-            column(LegalEntityType_Lbl; Cust.GetLegalEntityTypeLbl())
+            column(LegalEntityType_Lbl; Customer.GetLegalEntityTypeLbl())
             {
             }
             column(Copy_Lbl; CopyLbl)
@@ -381,7 +383,7 @@ report 50102 "ITMS Sales - Invoice"
             column(Questions_Lbl; QuestionsLbl)
             {
             }
-            column(Contact_Lbl; CompanyInfo.GetContactUsText())
+            column(Contact_Lbl; CompanyInformation.GetContactUsText())
             {
             }
             column(DocumentTitle_Lbl; DocumentCaption())
@@ -704,7 +706,7 @@ report 50102 "ITMS Sales - Invoice"
                     TotalPaymentDiscOnVAT += -("Line Amount" - "Inv. Discount Amount" - "Amount Including VAT");
 
                     if FirstLineHasBeenOutput then
-                        Clear(DummyCompanyInfo.Picture);
+                        Clear(DummyCompanyInformation.Picture);
                     FirstLineHasBeenOutput := true;
 
                     JobNo := "Job No.";
@@ -741,7 +743,7 @@ report 50102 "ITMS Sales - Invoice"
                     TransHeaderAmount := 0;
                     PrevLineAmount := 0;
                     FirstLineHasBeenOutput := false;
-                    DummyCompanyInfo.Picture := CompanyInfo.Picture;
+                    DummyCompanyInformation.Picture := CompanyInformation.Picture;
 
                     OnAfterLineOnPreDataItem(Header, Line);
                 end;
@@ -1122,15 +1124,15 @@ report 50102 "ITMS Sales - Invoice"
             var
                 Currency: Record Currency;
                 CurrencyExchangeRate: Record "Currency Exchange Rate";
-                GeneralLedgerSetup: Record "General Ledger Setup";
                 PaymentServiceSetup: Record "Payment Service Setup";
                 SeriesLotNumbersCodeunit: Codeunit "Series Lot Numbers";
+                SalesDocumentType: Enum "Sales Document Type";
             begin
                 TempTrackingSpecification.Reset();
                 TempTrackingSpecification.DeleteAll();
-                SeriesLotNumbersCodeunit.RetrieveItemTracking(Database::"Sales Invoice Header", Header."No.", 0, TempTrackingSpecification);
+                SeriesLotNumbersCodeunit.RetrieveItemTracking(Database::"Sales Invoice Header", Header."No.", SalesDocumentType::Invoice, TempTrackingSpecification);
                 CurrReport.Language := LanguageCodeunit.GetLanguageIdOrDefault("Language Code");
-                FormatAddr.SetLanguageCode("Language Code");
+                FormatAddress.SetLanguageCode("Language Code");
 
                 if not IsReportInPreviewMode() then
                     Codeunit.Run(Codeunit::"Sales Inv.-Printed", Header);
@@ -1138,7 +1140,7 @@ report 50102 "ITMS Sales - Invoice"
                 CalcFields("Work Description");
                 ShowWorkDescription := "Work Description".HasValue;
 
-                ChecksPayableText := StrSubstNo(ChecksPayableLbl, CompanyInfo.Name);
+                ChecksPayableText := StrSubstNo(ChecksPayableLbl, CompanyInformation.Name);
 
                 FormatAddressFields(Header);
                 FormatDocumentFields(Header);
@@ -1146,13 +1148,13 @@ report 50102 "ITMS Sales - Invoice"
                 if BillToContact.Get("Bill-to Contact No.") then;
 
                 if not CompanyBankAccount.Get(Header."Company Bank Account Code") then
-                    CompanyBankAccount.CopyBankFieldsFromCompanyInfo(CompanyInfo);
+                    CompanyBankAccount.CopyBankFieldsFromCompanyInfo(CompanyInformation);
 
                 FillLeftHeader();
                 FillRightHeader();
 
-                if not Cust.Get("Bill-to Customer No.") then
-                    Clear(Cust);
+                if not Customer.Get("Bill-to Customer No.") then
+                    Clear(Customer);
 
                 if "Currency Code" <> '' then begin
                     CurrencyExchangeRate.FindCurrency("Posting Date", "Currency Code", 1);
@@ -1263,11 +1265,11 @@ report 50102 "ITMS Sales - Invoice"
 
     trigger OnInitReport()
     begin
-        GLSetup.Get();
-        CompanyInfo.SetAutoCalcFields(Picture);
-        CompanyInfo.Get();
-        SalesSetup.Get();
-        CompanyInfo.VerifyAndSetPaymentInfo();
+        GeneralLedgerSetup.Get();
+        CompanyInformation.SetAutoCalcFields(Picture);
+        CompanyInformation.Get();
+        SalesReceivablesSetup.Get();
+        CompanyInformation.VerifyAndSetPaymentInfo();
     end;
 
     trigger OnPostReport()
@@ -1294,21 +1296,21 @@ report 50102 "ITMS Sales - Invoice"
         if not CurrReport.UseRequestPage then
             InitLogInteraction();
 
-        CompanyLogoPosition := SalesSetup."Logo Position on Documents";
+        CompanyLogoPosition := SalesReceivablesSetup."Logo Position on Documents";
     end;
 
     var
-        CompanyInfo: Record "Company Information";
-        DummyCompanyInfo: Record "Company Information";
+        CompanyInformation: Record "Company Information";
+        DummyCompanyInformation: Record "Company Information";
         BillToContact: Record Contact;
         SellToContact: Record Contact;
-        Cust: Record Customer;
-        GLSetup: Record "General Ledger Setup";
-        RespCenter: Record "Responsibility Center";
+        Customer: Record Customer;
+        GeneralLedgerSetup: Record "General Ledger Setup";
+        ResponsibilityCenter: Record "Responsibility Center";
         TempTrackingSpecification: Record "Tracking Specification" temporary;
         VATClause: Record "VAT Clause";
         AutoFormat: Codeunit "Auto Format";
-        FormatAddr: Codeunit "Format Address";
+        FormatAddress: Codeunit "Format Address";
         FormatDocument: Codeunit "Format Document";
         LanguageCodeunit: Codeunit Language;
         SegManagement: Codeunit SegManagement;
@@ -1400,7 +1402,7 @@ report 50102 "ITMS Sales - Invoice"
         TempLineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist." temporary;
         PaymentMethod: Record "Payment Method";
         PaymentTerms: Record "Payment Terms";
-        SalesSetup: Record "Sales & Receivables Setup";
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
         SalespersonPurchaser: Record "Salesperson/Purchaser";
         ShipmentMethod: Record "Shipment Method";
         DisplayAdditionalFeeNoteLocal: Boolean;
@@ -1486,7 +1488,7 @@ report 50102 "ITMS Sales - Invoice"
     begin
         OnBeforeGetDocumentCaption(Header, DocCaption);
         if DocCaption <> '' then
-            exit(DocCaption);
+            exit(CopyStr(DocCaption, 1, 250));
         exit(SalesInvoiceLbl);
     end;
 
@@ -1539,7 +1541,6 @@ report 50102 "ITMS Sales - Invoice"
     local procedure GetLineFeeNoteOnReportHist(SalesInvoiceHeaderNo: Code[20])
     var
         CustLedgerEntry: Record "Cust. Ledger Entry";
-        Customer: Record Customer;
         LineFeeNoteOnReportHist: Record "Line Fee Note on Report Hist.";
     begin
         TempLineFeeNoteOnReportHist.DeleteAll();
@@ -1584,7 +1585,7 @@ report 50102 "ITMS Sales - Invoice"
         FillNameValueTable(LeftHeader, Header.FieldCaption("Due Date"), Format(Header."Due Date", 0, 4));
         FillNameValueTable(LeftHeader, PaymentTermsDescLbl, PaymentTerms.Description);
         FillNameValueTable(LeftHeader, PaymentMethodDescLbl, PaymentMethod.Description);
-        FillNameValueTable(LeftHeader, Cust.GetLegalEntityTypeLbl(), Cust.GetLegalEntityType());
+        FillNameValueTable(LeftHeader, Customer.GetLegalEntityTypeLbl(), Customer.GetLegalEntityType());
         FillNameValueTable(LeftHeader, ShptMethodDescLbl, ShipmentMethod.Description);
 
         OnAfterFillLeftHeader(LeftHeader, Header);
@@ -1599,13 +1600,13 @@ report 50102 "ITMS Sales - Invoice"
         if not IsHandled then begin
             RightHeader.DeleteAll();
 
-            FillNameValueTable(RightHeader, EMailLbl, CompanyInfo."E-Mail");
-            FillNameValueTable(RightHeader, HomePageLbl, CompanyInfo."Home Page");
-            FillNameValueTable(RightHeader, CompanyInfoPhoneNoLbl, CompanyInfo."Phone No.");
-            FillNameValueTable(RightHeader, CompanyInfo.GetRegistrationNumberLbl(), CompanyInfo.GetRegistrationNumber());
-            FillNameValueTable(RightHeader, CompanyInfo.GetVATRegistrationNumberLbl(), CompanyInfo.GetVATRegistrationNumber());
+            FillNameValueTable(RightHeader, EMailLbl, CompanyInformation."E-Mail");
+            FillNameValueTable(RightHeader, HomePageLbl, CompanyInformation."Home Page");
+            FillNameValueTable(RightHeader, CompanyInfoPhoneNoLbl, CompanyInformation."Phone No.");
+            FillNameValueTable(RightHeader, CompanyInformation.GetRegistrationNumberLbl(), CompanyInformation.GetRegistrationNumber());
+            FillNameValueTable(RightHeader, CompanyInformation.GetVATRegistrationNumberLbl(), CompanyInformation.GetVATRegistrationNumber());
             FillNameValueTable(RightHeader, CompanyInfoBankNameLbl, CompanyBankAccount.Name);
-            FillNameValueTable(RightHeader, CompanyInfoGiroNoLbl, CompanyInfo."Giro No.");
+            FillNameValueTable(RightHeader, CompanyInfoGiroNoLbl, CompanyInformation."Giro No.");
             FillNameValueTable(RightHeader, CompanyBankAccount.FieldCaption(IBAN), CompanyBankAccount.IBAN);
             FillNameValueTable(RightHeader, CompanyBankAccount.FieldCaption("SWIFT Code"), CompanyBankAccount."SWIFT Code");
             FillNameValueTable(RightHeader, Header.GetPaymentReferenceLbl(), Header.GetPaymentReference());
@@ -1633,22 +1634,21 @@ report 50102 "ITMS Sales - Invoice"
 
     local procedure FormatAddressFields(var SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
-        FormatAddr.GetCompanyAddr(SalesInvoiceHeader."Responsibility Center", RespCenter, CompanyInfo, CompanyAddr);
-        FormatAddr.SalesInvBillTo(CustAddr, SalesInvoiceHeader);
-        ShowShippingAddr := FormatAddr.SalesInvShipTo(ShipToAddr, CustAddr, SalesInvoiceHeader);
+        FormatAddress.GetCompanyAddr(SalesInvoiceHeader."Responsibility Center", ResponsibilityCenter, CompanyInformation, CompanyAddr);
+        FormatAddress.SalesInvBillTo(CustAddr, SalesInvoiceHeader);
+        ShowShippingAddr := FormatAddress.SalesInvShipTo(ShipToAddr, CustAddr, SalesInvoiceHeader);
     end;
 
     local procedure FormatDocumentFields(SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
-        with SalesInvoiceHeader do begin
-            FormatDocument.SetTotalLabels(GetCurrencySymbol(), TotalText, TotalInclVATText, TotalExclVATText);
-            FormatDocument.SetSalesPerson(SalespersonPurchaser, "Salesperson Code", SalesPersonText);
-            FormatDocument.SetPaymentTerms(PaymentTerms, "Payment Terms Code", "Language Code");
-            FormatDocument.SetPaymentMethod(PaymentMethod, "Payment Method Code", "Language Code");
-            FormatDocument.SetShipmentMethod(ShipmentMethod, "Shipment Method Code", "Language Code");
+        FormatDocument.SetTotalLabels(SalesInvoiceHeader.GetCurrencySymbol(), TotalText, TotalInclVATText, TotalExclVATText);
+        FormatDocument.SetSalesPerson(SalespersonPurchaser, SalesInvoiceHeader."Salesperson Code", SalesPersonText);
+        FormatDocument.SetPaymentTerms(PaymentTerms, SalesInvoiceHeader."Payment Terms Code", SalesInvoiceHeader."Language Code");
+        FormatDocument.SetPaymentMethod(PaymentMethod, SalesInvoiceHeader."Payment Method Code", SalesInvoiceHeader."Language Code");
+        FormatDocument.SetShipmentMethod(ShipmentMethod, SalesInvoiceHeader."Shipment Method Code", SalesInvoiceHeader."Language Code");
 
-            OnAfterFormatDocumentFields(SalesInvoiceHeader);
-        end;
+        OnAfterFormatDocumentFields(SalesInvoiceHeader);
+
     end;
 
     local procedure GetJobTaskDescription(JobNoL: Code[20]; JobTaskNoL: Code[20]): Text[100]
@@ -1669,12 +1669,12 @@ report 50102 "ITMS Sales - Invoice"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterFillLeftHeader(var LeftHeader: Record "Name/Value Buffer"; SalesInvoiceHeader: Record "Sales Invoice Header")
+    local procedure OnAfterFillLeftHeader(var NameValueBufferLeft: Record "Name/Value Buffer"; SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnAfterFillRightHeader(var RightHeader: Record "Name/Value Buffer"; SalesInvoiceHeader: Record "Sales Invoice Header")
+    local procedure OnAfterFillRightHeader(var NameValueBufferRight: Record "Name/Value Buffer"; SalesInvoiceHeader: Record "Sales Invoice Header")
     begin
     end;
 
@@ -1725,14 +1725,14 @@ report 50102 "ITMS Sales - Invoice"
         VATAmountLine2.InsertLine();
     end;
 
-    local procedure FormatLineValues(CurrLine: Record "Sales Invoice Line")
+    local procedure FormatLineValues(SalesInvoiceLineLocal: Record "Sales Invoice Line")
     var
         IsHandled: Boolean;
     begin
         IsHandled := false;
-        OnBeforeFormatLineValues(CurrLine, FormattedQuantity, FormattedUnitPrice, FormattedVATPct, FormattedLineAmount, IsHandled);
+        OnBeforeFormatLineValues(SalesInvoiceLineLocal, FormattedQuantity, FormattedUnitPrice, FormattedVATPct, FormattedLineAmount, IsHandled);
         if not IsHandled then
-            FormatDocument.SetSalesInvoiceLine(CurrLine, FormattedQuantity, FormattedUnitPrice, FormattedVATPct, FormattedLineAmount);
+            FormatDocument.SetSalesInvoiceLine(SalesInvoiceLineLocal, FormattedQuantity, FormattedUnitPrice, FormattedVATPct, FormattedLineAmount);
     end;
 
     [IntegrationEvent(false, false)]
@@ -1751,7 +1751,7 @@ report 50102 "ITMS Sales - Invoice"
     end;
 
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeFillRightHeader(var SalesInvoiceHeader: Record "Sales Invoice Header"; SalespersonPurchaser: Record "Salesperson/Purchaser"; var SalesPersonText: Text; var RightHeader: Record "Name/Value Buffer"; var IsHandled: Boolean)
+    local procedure OnBeforeFillRightHeader(var SalesInvoiceHeader: Record "Sales Invoice Header"; SalespersonPurchaser: Record "Salesperson/Purchaser"; var SalesPersonText: Text[50]; var NameValueBufferRight: Record "Name/Value Buffer"; var IsHandled: Boolean)
     begin
     end;
 
