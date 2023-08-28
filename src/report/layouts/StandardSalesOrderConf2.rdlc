@@ -4131,7 +4131,9 @@
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Center</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox99</rd:DefaultName>
@@ -4140,6 +4142,7 @@
                                                               <Color>LightGrey</Color>
                                                               <Style>None</Style>
                                                             </Border>
+                                                            <VerticalAlign>Top</VerticalAlign>
                                                             <PaddingLeft>5pt</PaddingLeft>
                                                             <PaddingRight>5pt</PaddingRight>
                                                           </Style>
@@ -4162,7 +4165,9 @@
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Center</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox100</rd:DefaultName>
@@ -4231,7 +4236,9 @@
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Center</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox70</rd:DefaultName>
@@ -4240,6 +4247,7 @@
                                                               <Color>LightGrey</Color>
                                                               <Style>None</Style>
                                                             </Border>
+                                                            <VerticalAlign>Middle</VerticalAlign>
                                                             <PaddingLeft>5pt</PaddingLeft>
                                                             <PaddingRight>5pt</PaddingRight>
                                                           </Style>
@@ -4262,7 +4270,9 @@
                                                                   </Style>
                                                                 </TextRun>
                                                               </TextRuns>
-                                                              <Style />
+                                                              <Style>
+                                                                <TextAlign>Center</TextAlign>
+                                                              </Style>
                                                             </Paragraph>
                                                           </Paragraphs>
                                                           <rd:DefaultName>Textbox71</rd:DefaultName>
