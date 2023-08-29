@@ -6105,7 +6105,7 @@
                                           </TablixMember>
                                           <TablixMember>
                                             <Visibility>
-                                              <Hidden>=Fields!LineNo_Line.Value = 0</Hidden>
+                                              <Hidden>=Last(Not((Fields!Lot.Value &lt;&gt; "") Or (Fields!Series.Value &lt;&gt; "")))</Hidden>
                                             </Visibility>
                                           </TablixMember>
                                         </TablixMembers>
@@ -6171,7 +6171,6 @@
                             </Border>
                           </Style>
                         </Rectangle>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
