@@ -10,6 +10,7 @@ codeunit 50100 "Series Lot Numbers"
         ItemLedgerEntry: Record "Item Ledger Entry";
         ValueEntry: Record "Value Entry";
 
+
     procedure RetrieveItemTracking(TableNumber: Integer; SourceID: Code[20]; SalesHeaderDocumentType: Enum "Sales Document Type"; var TempTrackingSpecification: Record "Tracking Specification" temporary)
     var
         incrementNumber: Integer;
